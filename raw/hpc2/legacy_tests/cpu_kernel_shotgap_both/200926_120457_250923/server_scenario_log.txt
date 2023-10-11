@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/cpu_kernel_shotgap_both/200926_120457_250923/test_description.xml
+
+[TS] REPORT TIMESTAMP: Mon Sep 25 19:25:49 2023
+
+[RE] PATH            : /testsuite/cpu_kernel_shotgap_both/200926_120457_250923/test_results.xml
+
