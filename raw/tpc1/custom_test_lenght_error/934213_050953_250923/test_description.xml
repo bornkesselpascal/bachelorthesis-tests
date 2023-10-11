@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>934213_050953_250923</t_uid>
+		<path>/testsuite/custom_test_lenght_error</path>
+	</metadata>
+	<duration>20</duration>
+	<connection>
+		<custom>
+			<client_ip>localhost</client_ip>
+			<server_ip>localhost</server_ip>
+			<port>8100</port>
+			<gap>100000</gap>
+			<datagram>
+				<size>500</size>
+				<random>false</random>
+			</datagram>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp1s0f0</client>
+		<server>enp1s0f0</server>
+	</interface>
+	<stress>
+		<type>NETWORK</type>
+		<num>5</num>
+		<location>LOC_CLIENT</location>
+	</stress>
+</test_description>
