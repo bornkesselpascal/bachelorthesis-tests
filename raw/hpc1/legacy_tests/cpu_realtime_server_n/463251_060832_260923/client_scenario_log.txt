@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/cpu_realtime_server_n/463251_060832_260923/test_description.xml
+
+[TS] REPORT TIMESTAMP: Tue Sep 26 06:17:01 2023
+
+[RE] PATH            : /testsuite/cpu_realtime_server_n/463251_060832_260923/test_results.xml
+

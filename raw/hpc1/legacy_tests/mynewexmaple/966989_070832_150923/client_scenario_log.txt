@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/mynewexmaple/966989_070832_150923/test_description.xml
+
+[TS] REPORT TIMESTAMP: Fri Sep 15 07:08:35 2023
+
+[RE] PATH            : /testsuite/mynewexmaple/966989_070832_150923/test_results.xml
+

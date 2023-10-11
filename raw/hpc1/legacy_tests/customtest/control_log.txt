@@ -1,0 +1,77 @@
+[IM] TYPE                   : TEST CONTROL CLIENT LOG
+[IM] STARTUP                : Fri Sep 15 01:58:30 2023
+
+[CD] METHOD                 : 1
+[CD] PATH                   : /testsuite/customtest
+[CD] DURATION MIN           : 10
+[CD] DURATION MID           : 30
+[CD] DURATION MAX           : 400
+[CD] TARGET_CON IP          : 10.30.0.2
+[CD] TARGET_CON BANDWIDTH   : 10G
+[CD] TARGET_CON DATAGRAMSIZE: 1000
+[CD] INTERFACE CLIENT       : enp1s0f0
+[CD] INTERFACE SERVER       : enp1s0f0
+[CD] SERVIC_CON IP          : 10.30.0.2
+[CD] SERVIC_CON PORT        : 8080
+[CD] CLIENT_ONLY            : FALSE
+[CD] STRESS TYPE            : 0
+[CD] STRESS NUM_MIN         : 0
+[CD] STRESS NUM_MAX         : 16
+[CD] STRESS NUM_STEP        : 10
+
+
+
+[TC] SCENARIO T_UID         : 856673_015833_150923
+[TC] END TIME               : Fri Sep 15 01:58:48 2023
+[TD] STRESS (TYPE/NUM)      : 0/16
+[TD] DURATION               : 10
+[RE] STATUS                 : 1
+[RE] RESULT (LOSS/TOTAL)    : 0/0
+
+
+
+[TC] SCENARIO T_UID         : 786436_015857_150923
+[TC] END TIME               : Fri Sep 15 01:59:32 2023
+[TD] STRESS (TYPE/NUM)      : 0/16
+[TD] DURATION               : 30
+[RE] STATUS                 : 1
+[RE] RESULT (LOSS/TOTAL)    : 0/0
+
+
+
+[TC] SCENARIO T_UID         : 401821_015941_150923
+[TC] END TIME               : Fri Sep 15 02:06:26 2023
+[TD] STRESS (TYPE/NUM)      : 0/16
+[TD] DURATION               : 400
+[RE] STATUS                 : 1
+[RE] RESULT (LOSS/TOTAL)    : 0/0
+
+
+
+[TC] SCENARIO T_UID         : 912785_020849_150923
+[TC] END TIME               : Fri Sep 15 02:09:04 2023
+[TD] STRESS (TYPE/NUM)      : 0/14
+[TD] DURATION               : 10
+[RE] STATUS                 : 1
+[RE] RESULT (LOSS/TOTAL)    : 0/0
+
+
+
+[TC] SCENARIO T_UID         : 379474_020914_150923
+[TC] END TIME               : Fri Sep 15 02:09:49 2023
+[TD] STRESS (TYPE/NUM)      : 0/14
+[TD] DURATION               : 30
+[RE] STATUS                 : 1
+[RE] RESULT (LOSS/TOTAL)    : 0/0
+
+
+
+[TC] SCENARIO T_UID         : 798388_021002_150923
+[TC] END TIME               : Fri Sep 15 02:20:25 2023
+[TD] STRESS (TYPE/NUM)      : 0/14
+[TD] DURATION               : 400
+[RE] STATUS                 : 1
+[RE] RESULT (LOSS/TOTAL)    : 0/0
+
+
+

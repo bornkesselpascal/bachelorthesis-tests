@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>286310_051859_290923</t_uid>
+		<path>/testsuite/mem_server_bandwidthtest_2D</path>
+	</metadata>
+	<duration>100</duration>
+	<connection>
+		<custom>
+			<client_ip>10.0.0.1</client_ip>
+			<server_ip>10.0.0.2</server_ip>
+			<port>8100</port>
+			<gap>3000</gap>
+			<datagram>
+				<size>80</size>
+				<random>false</random>
+			</datagram>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp1s0f0</client>
+		<server>enp1s0f0</server>
+	</interface>
+	<stress>
+		<type>MEMORY</type>
+		<num>16</num>
+		<location>LOC_SERVER</location>
+	</stress>
+</test_description>
