@@ -1,0 +1,545 @@
+<?xml version="1.0"?>
+<client_log>
+	<startup>Sun Oct 15 09:40:10 2023
+</startup>
+	<scenario>
+		<t_uid>247652_094010_151023</t_uid>
+		<log_time>Sun Oct 15 11:40:22 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>80</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>577867663</num_total>
+			<num_misses>-1992836478</num_misses>
+			<elapsed_time>7199.994762</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>655519_114023_151023</t_uid>
+		<log_time>Sun Oct 15 11:41:05 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>67</num_loss>
+			<num_total>2000001</num_total>
+			<num_misses>9728851</num_misses>
+			<elapsed_time>29.322456</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>757373_114106_151023</t_uid>
+		<log_time>Sun Oct 15 11:42:02 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>79</num_loss>
+			<num_total>3000001</num_total>
+			<num_misses>1424242</num_misses>
+			<elapsed_time>44.242619</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>422970_114203_151023</t_uid>
+		<log_time>Sun Oct 15 11:44:35 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>117</num_loss>
+			<num_total>7000001</num_total>
+			<num_misses>9761</num_misses>
+			<elapsed_time>140.195324</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>909263_114436_151023</t_uid>
+		<log_time>Sun Oct 15 12:12:50 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>76736</num_loss>
+			<num_total>56000000</num_total>
+			<num_misses>8709</num_misses>
+			<elapsed_time>1681.259662</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>975264_121251_151023</t_uid>
+		<log_time>Sun Oct 15 14:13:02 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>179977719</num_total>
+			<num_misses>12053</num_misses>
+			<elapsed_time>7199.583725</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>253728_141303_151023</t_uid>
+		<log_time>Sun Oct 15 14:14:24 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>990640</num_loss>
+			<num_total>1000001</num_total>
+			<num_misses>26570713</num_misses>
+			<elapsed_time>68.927337</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>488425_141425_151023</t_uid>
+		<log_time>Sun Oct 15 14:15:46 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>996603</num_loss>
+			<num_total>1000001</num_total>
+			<num_misses>153331</num_misses>
+			<elapsed_time>69.200281</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>716417_141547_151023</t_uid>
+		<log_time>Sun Oct 15 14:17:12 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>918166</num_loss>
+			<num_total>1000001</num_total>
+			<num_misses>41027</num_misses>
+			<elapsed_time>72.872318</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>503478_141713_151023</t_uid>
+		<log_time>Sun Oct 15 14:18:47 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>922339</num_loss>
+			<num_total>1000001</num_total>
+			<num_misses>15804</num_misses>
+			<elapsed_time>81.264632</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>701301_141848_151023</t_uid>
+		<log_time>Sun Oct 15 14:20:30 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>837298</num_loss>
+			<num_total>1000001</num_total>
+			<num_misses>5519</num_misses>
+			<elapsed_time>90.496955</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>212317_142031_151023</t_uid>
+		<log_time>Sun Oct 15 14:22:23 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>253756</num_loss>
+			<num_total>1000001</num_total>
+			<num_misses>1007</num_misses>
+			<elapsed_time>100.101172</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>760791_142224_151023</t_uid>
+		<log_time>Sun Oct 15 14:44:36 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>274419</num_loss>
+			<num_total>12000001</num_total>
+			<num_misses>90</num_misses>
+			<elapsed_time>1320.008852</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>839699_144437_151023</t_uid>
+		<log_time>Sun Oct 15 15:16:49 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>71</num_loss>
+			<num_total>16000001</num_total>
+			<num_misses>47</num_misses>
+			<elapsed_time>1920.004046</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>351463_151650_151023</t_uid>
+		<log_time>Sun Oct 15 15:36:33 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>87</num_loss>
+			<num_total>9000001</num_total>
+			<num_misses>56</num_misses>
+			<elapsed_time>1170.006441</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>405205_153634_151023</t_uid>
+		<log_time>Sun Oct 15 15:55:26 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>214054</num_loss>
+			<num_total>8000001</num_total>
+			<num_misses>55</num_misses>
+			<elapsed_time>1120.006873</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>885448_155527_151023</t_uid>
+		<log_time>Sun Oct 15 16:13:09 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>63</num_loss>
+			<num_total>7000001</num_total>
+			<num_misses>21</num_misses>
+			<elapsed_time>1050.002397</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>808713_161310_151023</t_uid>
+		<log_time>Sun Oct 15 16:32:02 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>189321</num_loss>
+			<num_total>7000001</num_total>
+			<num_misses>16</num_misses>
+			<elapsed_time>1120.001742</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>264216_163203_151023</t_uid>
+		<log_time>Sun Oct 15 17:09:05 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>76</num_loss>
+			<num_total>13000001</num_total>
+			<num_misses>19</num_misses>
+			<elapsed_time>2210.001295</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>207674_170906_151023</t_uid>
+		<log_time>Sun Oct 15 17:48:18 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>61</num_loss>
+			<num_total>13000001</num_total>
+			<num_misses>11</num_misses>
+			<elapsed_time>2339.999913</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>200870_174819_151023</t_uid>
+		<log_time>Sun Oct 15 17:51:41 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>25808</num_loss>
+			<num_total>1000001</num_total>
+			<num_misses>13</num_misses>
+			<elapsed_time>190.002551</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>543113_175142_151023</t_uid>
+		<log_time>Sun Oct 15 18:05:14 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>53</num_loss>
+			<num_total>4000001</num_total>
+			<num_misses>5</num_misses>
+			<elapsed_time>800.000470</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>261466_180515_151023</t_uid>
+		<log_time>Sun Oct 15 19:18:57 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>23357</num_loss>
+			<num_total>21000001</num_total>
+			<num_misses>7</num_misses>
+			<elapsed_time>4409.997435</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>109174_191858_151023</t_uid>
+		<log_time>Sun Oct 15 21:19:09 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>27</num_loss>
+			<num_total>32722893</num_total>
+			<num_misses>1</num_misses>
+			<elapsed_time>7199.029647</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>348707_211910_151023</t_uid>
+		<log_time>Sun Oct 15 23:19:22 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>2</num_loss>
+			<num_total>31304158</num_total>
+			<num_misses>3</num_misses>
+			<elapsed_time>7199.949908</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>804213_231923_151023</t_uid>
+		<log_time>Mon Oct 16 01:19:35 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>6</num_loss>
+			<num_total>29999824</num_total>
+			<num_misses>0</num_misses>
+			<elapsed_time>7199.950809</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>391195_011936_161023</t_uid>
+		<log_time>Mon Oct 16 03:19:48 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>28799782</num_total>
+			<num_misses>14</num_misses>
+			<elapsed_time>7199.942005</elapsed_time>
+		</results>
+	</scenario>
+</client_log>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<client_log>
+	<startup>Fri Oct 13 00:35:02 2023
+</startup>
+	<scenario>
+		<t_uid>357553_003502_131023</t_uid>
+		<log_time>Fri Oct 13 02:35:14 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>80</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>1032690062</num_total>
+			<num_misses>1847202143</num_misses>
+			<elapsed_time>7199.727935</elapsed_time>
+		</results>
+	</scenario>
+</client_log>
