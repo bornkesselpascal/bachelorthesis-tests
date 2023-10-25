@@ -1,8 +1,18 @@
 import os
-from constants import client_folder, server_folder
+from constants import client_folder, server_folder, output_folder
 from parsing import *
 from file_management import *
 from tablemaker import *
+from graphs import *
+
+
+campaign_name = 'test_campaign'
+
+# Create campaign folder for the output
+current_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+campaign_folder = os.path.join(output_folder, f"{campaign_name}_{current_timestamp}")
+if not os.path.exists(campaign_folder):
+    os.makedirs(campaign_folder)
 
 
 # List of tuples containing the following data for each test scenario:
@@ -47,5 +57,28 @@ for test_folder in os.listdir(client_folder):
 test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connection']['cycle_time']))
     
 
-# Write the test data to a csv file
-write_test_table(test_data)
+# Write the test data to a csv file and create query overview if possible
+write_test_table(test_data, campaign_folder)
+for test_scenario in test_data:
+    if test_scenario[3] is not None:
+        scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
+        write_query_table(test_scenario, scenario_path)
+
+
+# Create graphs:
+#   - campaign
+#       - packet loss per datagram size
+#       - packet loss per test case (colored bars)
+#   - test scenario
+#       - packet drops (per X) histogram
+#       - packet drops over time
+
+plot_campaign_loss_per_datagram_size(test_data, campaign_folder)
+plot_campaign_loss_per_cycle_time(test_data, campaign_folder)       # FIXME: not implemented
+
+for test_scenario in test_data:
+    if test_scenario[3] is not None:
+        scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
+        plot_scenario_histogram_losses(test_scenario, scenario_path)
+        plot_scenario_losses_over_time(test_scenario, scenario_path)
+

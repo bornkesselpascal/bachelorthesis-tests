@@ -86,8 +86,8 @@ def parse_query_messages(path) -> list:
 
 
     for report in query_root.findall('report'):
-        # REPORT CONTENT (Total and misses are reversed in the XML file, this is a bug in TestSuite.)
-        misses = int(report.find('total').text)
+        # REPORT CONTENT (Total and losses are reversed in the XML file, this is a bug in TestSuite.)
+        losses = int(report.find('total').text)
         total = int(report.find('misses').text)
         timestamp = report.find('timestamp')
         if timestamp is not None:
@@ -97,12 +97,12 @@ def parse_query_messages(path) -> list:
 
         # DIFFERENCE
         if reports:
-            difference = misses - reports[-1]['misses']
+            difference = losses - reports[-1]['losses']
         else:
-            difference = 0
+            difference = losses
         
         reports.append({
-            'misses': misses,
+            'losses': losses,
             'total': total,
             'timestamp': timestamp,
             'difference': difference

@@ -1,10 +1,11 @@
 import csv
 import math
+import os
 from datetime import datetime
+from data_format import format_query
 
-def write_test_table(test_data: list) -> None:
-    current_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    filename = f"test_scenarios_{current_timestamp}.csv"
+def write_test_table(test_data: list, output_path: str) -> None:
+    filename = os.path.join(output_path, f"campaign_overview.csv")
 
     with open(filename, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
@@ -96,7 +97,6 @@ def get_scenario_data(scenario: tuple) -> list:
     return scenario_data
 
 
-
 def get_losses_location(scenario_client_results: dict, scenario_server_results: dict) -> str:
     result = str()
 
@@ -129,3 +129,22 @@ def get_losses_location(scenario_client_results: dict, scenario_server_results: 
     return result
 
 
+def write_query_table(test_scenario: dict, output_path: str) -> None:
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+    filename = os.path.join(output_path, f"query_overview.csv")
+
+    duration = test_scenario[1]['report']['duration']
+    losses = test_scenario[1]['report']['losses']
+    total  = test_scenario[1]['report']['total']
+    query = format_query(test_scenario[3], duration, losses, total)
+
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+
+        # Write header
+        writer.writerow(['Timestamp', 'Packets [total]', 'Losses [Total]', 'Losses [Difference]'])
+        
+        # Write content
+        for report in query:
+            writer.writerow([report['timestamp'], report['total'], report['losses'], report['difference']])
