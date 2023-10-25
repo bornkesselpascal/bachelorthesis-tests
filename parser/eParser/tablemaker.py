@@ -1,6 +1,8 @@
 import csv
 import math
 import os
+import pandas as pd
+import openpyxl
 from datetime import datetime
 from data_format import format_query
 
@@ -25,6 +27,8 @@ def write_test_table(test_data: list, output_path: str) -> None:
         for scenario in test_data:
             scenario_data = get_scenario_data(scenario)
             writer.writerow(scenario_data)
+
+    save_as_excel(filename, output_path)
 
 
 def get_scenario_data(scenario: tuple) -> list:
@@ -148,3 +152,32 @@ def write_query_table(test_scenario: dict, output_path: str) -> None:
         # Write content
         for report in query:
             writer.writerow([report['timestamp'], report['total'], report['losses'], report['difference']])
+
+    save_as_excel(filename, output_path)
+
+
+def save_as_excel(csv_path: str, output_path: str) -> None:
+    filename = os.path.join(output_path, f"{os.path.splitext(os.path.basename(csv_path))[0]}.xlsx")
+
+    # Load the CSV data into a DataFrame
+    df = pd.read_csv(csv_path)
+
+    # Convert the DataFrame to an Excel file
+    with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+        df.to_excel(writer, sheet_name='Sheet1', index=False)
+
+        # Get the default sheet directly
+        worksheet = writer.sheets['Sheet1']
+
+        # Hide columns in campaign overview
+        if "campaign_overview" in filename:
+            for col in ['D', 'E', 'F']:
+                worksheet.column_dimensions[col].hidden = True
+
+        # Create a table with all the data in the worksheet
+        max_row = worksheet.max_row
+        max_col = worksheet.max_column
+        table = openpyxl.worksheet.table.Table(displayName="Table1", ref=f"A1:{chr(64 + max_col)}{max_row}")
+
+        # Add the table to the worksheet
+        worksheet.add_table(table)
