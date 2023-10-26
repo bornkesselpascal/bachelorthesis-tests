@@ -6,7 +6,7 @@ from tablemaker import *
 from graphs import *
 
 
-campaign_name = 'test_campaign'
+campaign_name = 'fin_realstress-log_all'
 
 # Create campaign folder for the output
 current_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -79,6 +79,11 @@ plot_campaign_loss_per_cycle_time(test_data, campaign_folder)       # FIXME: not
 for test_scenario in test_data:
     if test_scenario[3] is not None:
         scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
-        plot_scenario_histogram_losses(test_scenario, scenario_path)
-        plot_scenario_losses_over_time(test_scenario, scenario_path)
+
+        query = format_query(test_scenario[3], test_scenario[1]['report']['duration'], test_scenario[1]['report']['losses'], test_scenario[1]['report']['total'])
+        current_scenario = (test_scenario[0], test_scenario[1], test_scenario[2], query)
+        
+        plot_scenario_histogram_losses(current_scenario, scenario_path)
+        plot_scenario_losses_over_time(current_scenario, scenario_path)
+        plot_scenario_packages_over_time(current_scenario, scenario_path)
 

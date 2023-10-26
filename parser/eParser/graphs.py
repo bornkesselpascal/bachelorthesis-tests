@@ -80,7 +80,7 @@ def plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) -> N
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
     
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
+    #plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
     plt.close()
 
 
@@ -100,10 +100,7 @@ def plot_scenario_histogram_losses(test_scenario: tuple((dict, dict, dict, list)
     plt.rc('font', family='serif')
 
     # Fetch the data for the visualization
-    duration = test_scenario[1]['report']['duration']
-    losses = test_scenario[1]['report']['losses']
-    total  = test_scenario[1]['report']['total']
-    query = format_query(test_scenario[3], duration, losses, total)
+    query = test_scenario[3]
 
     # Get the data for the histogram
     differences_list = [report['difference'] for report in query]
@@ -116,6 +113,7 @@ def plot_scenario_histogram_losses(test_scenario: tuple((dict, dict, dict, list)
     # Labels, title, and other configurations
     ax.set_xlabel('Packet Losses per 100000 Packets (Number of Packets)')
     ax.set_ylabel('Frequency')
+    #ax.set_yscale('log')
     ax.set_title('Frequency Analysis of Packet Losses')
     ax.set_xticks(range(0, max(differences_list) + 10, 10))
     plt.tight_layout()
@@ -125,12 +123,12 @@ def plot_scenario_histogram_losses(test_scenario: tuple((dict, dict, dict, list)
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
     
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
+    #plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
     plt.close()
 
 
 def plot_scenario_losses_over_time(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
-    diagram_name = 'diagram_time'
+    diagram_name = 'losses_time'
 
     # Set the style
     sns.set_style("whitegrid")
@@ -139,10 +137,41 @@ def plot_scenario_losses_over_time(test_scenario: tuple((dict, dict, dict, list)
     plt.rc('font', family='serif')
 
     # Fetch the data for the visualization
-    duration = test_scenario[1]['report']['duration']
-    losses = test_scenario[1]['report']['losses']
-    total  = test_scenario[1]['report']['total']
-    query = format_query(test_scenario[3], duration, losses, total)
+    query = test_scenario[3]
+    query.insert(0, {'timestamp': 0, 'total': 0, 'losses': 0, 'difference': 0})
+
+    # Get the data for the diagram
+    timestamps = [report['timestamp'] for report in query]
+    difference = [report['difference'] for report in query]
+
+    # Create the diagram
+    fig, ax = plt.subplots(figsize=(12, 5))
+    ax.fill_between(timestamps, difference, color='lightgray', edgecolor='black', alpha=0.6)
+    ax.set_xlabel('Time (Seconds)')
+    ax.set_ylabel('Lost Packets (Number of Packets)')
+    #ax.set_yscale('log')
+    ax.set_title('Temporal Distribution of Packet Loss')
+
+    # Save the diagram
+    if generate_latex:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
+    
+    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    #plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
+    plt.close()
+
+
+def plot_scenario_packages_over_time(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
+    diagram_name = 'packages_time'
+
+    # Set the style
+    sns.set_style("whitegrid")
+    sns.set_context("paper", font_scale=1, rc={"lines.linewidth": 2})
+    plt.rc('text', usetex=False)
+    plt.rc('font', family='serif')
+
+    # Fetch the data for the visualization
+    query = test_scenario[3]
     query.insert(0, {'timestamp': 0, 'total': 0, 'losses': 0, 'difference': 0})
 
     # Get the data for the diagram
@@ -164,5 +193,5 @@ def plot_scenario_losses_over_time(test_scenario: tuple((dict, dict, dict, list)
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
     
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
+    #plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
     plt.close()
