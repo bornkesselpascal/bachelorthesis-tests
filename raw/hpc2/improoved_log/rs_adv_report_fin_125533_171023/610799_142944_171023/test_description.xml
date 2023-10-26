@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>610799_142944_171023</t_uid>
+		<path>/testsuite/rs_adv_report_fin_125533_171023</path>
+	</metadata>
+	<duration>7200</duration>
+	<connection>
+		<custom>
+			<client_ip>10.0.0.1</client_ip>
+			<server_ip>10.0.0.2</server_ip>
+			<port>8120</port>
+			<gap>150000</gap>
+			<datagram>
+				<size>8900</size>
+				<random>false</random>
+			</datagram>
+			<qos>false</qos>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp1s0f0</client>
+		<server>enp1s0f0</server>
+	</interface>
+	<stress>
+		<type>NONE</type>
+		<num>0</num>
+		<location>LOC_BOTH</location>
+	</stress>
+</test_description>

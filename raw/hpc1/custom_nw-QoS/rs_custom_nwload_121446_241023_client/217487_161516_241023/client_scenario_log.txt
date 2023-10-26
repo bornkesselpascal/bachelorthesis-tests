@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/rs_custom_nwload_121446_241023/217487_161516_241023/test_description.xml
+
+[TS] REPORT TIMESTAMP: Tue Oct 24 17:16:58 2023
+
+[RE] PATH            : /testsuite/rs_custom_nwload_121446_241023/217487_161516_241023/test_results.xml
+
