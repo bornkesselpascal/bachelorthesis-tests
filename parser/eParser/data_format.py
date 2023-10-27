@@ -14,7 +14,6 @@ def format_query(query: list, duartion: float, losses: int, total: int) -> list:
     
     # Iterate through the list and until we find a negative difference
     while any(report['difference'] < 0 for report in query):
-        last_index = 0
         for idx, current_report in enumerate(query):
             if current_report['difference'] < 0:
                 # Found a negative difference, fix the data
@@ -22,7 +21,6 @@ def format_query(query: list, duartion: float, losses: int, total: int) -> list:
                     # If the previous report has more losses than the current report, we can fix the data
                     if previous_report['losses'] > current_report['losses']:
                         previous_report['losses'] = current_report['losses']
-                last_index = idx
                 break
 
         # Recalculate the differences
