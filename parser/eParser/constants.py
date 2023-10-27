@@ -12,4 +12,7 @@ test_results_file = 'test_results.xml'
 
 
 # DIAGRAM OPTIONS
-generate_latex = False
+generate_histogram = False
+
+generate_png = False
+generate_latex = True

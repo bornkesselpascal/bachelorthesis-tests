@@ -1,4 +1,5 @@
 import os
+from multiprocessing import Process
 from constants import client_folder, server_folder, output_folder
 from parsing import *
 from file_management import *
@@ -6,7 +7,15 @@ from tablemaker import *
 from graphs import *
 
 
-campaign_name = 'fin_realstress-log_all'
+campaign_name = 'test'
+
+# Check if the results folder exists
+if not os.path.exists(client_folder):
+    print(f'ERROR: Folder {client_folder} does not exist!')
+    exit(1)
+
+# Print start message
+print(f'Starting eParser... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')
 
 # Create campaign folder for the output
 current_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -21,7 +30,7 @@ if not os.path.exists(campaign_folder):
 #   - server_results: dict or None
 #   - query_messages: list (of dicts) or None
 test_data = list()
-
+processes = list()
 
 # Parse all test scenarios and store the data in the list
 for test_folder in os.listdir(client_folder):
@@ -58,11 +67,20 @@ test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connect
     
 
 # Write the test data to a csv file and create query overview if possible
+
 write_test_table(test_data, campaign_folder)
+
+process = Process(target=write_test_table, args=(test_data, campaign_folder))
+process.start()
+processes.append(process)
+
 for test_scenario in test_data:
     if test_scenario[3] is not None:
         scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
-        write_query_table(test_scenario, scenario_path)
+
+        process = Process(target=write_query_table, args=(test_scenario, scenario_path))
+        process.start()
+        processes.append(process)
 
 
 # Create graphs:
@@ -80,10 +98,13 @@ for test_scenario in test_data:
     if test_scenario[3] is not None:
         scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
 
-        query = format_query(test_scenario[3], test_scenario[1]['report']['duration'], test_scenario[1]['report']['losses'], test_scenario[1]['report']['total'])
-        current_scenario = (test_scenario[0], test_scenario[1], test_scenario[2], query)
-        
-        plot_scenario_histogram_losses(current_scenario, scenario_path)
-        plot_scenario_losses_over_time(current_scenario, scenario_path)
-        plot_scenario_packages_over_time(current_scenario, scenario_path)
+        process = Process(target=create_scenario_graphs, args=(test_scenario, scenario_path))
+        process.start()
+        processes.append(process)
 
+for process in processes:
+    process.join()
+
+ 
+# Print end message
+print(f'Finished eParser... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')

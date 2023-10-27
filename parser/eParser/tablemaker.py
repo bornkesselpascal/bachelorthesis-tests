@@ -141,7 +141,7 @@ def write_query_table(test_scenario: dict, output_path: str) -> None:
     duration = test_scenario[1]['report']['duration']
     losses = test_scenario[1]['report']['losses']
     total  = test_scenario[1]['report']['total']
-    query = format_query(test_scenario[3], duration, losses, total)
+    query = format_query(test_scenario[3].copy(), duration, losses, total)
 
     with open(filename, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
