@@ -23,7 +23,7 @@ def write_test_table(test_data: list, campaign_folder: str, processes: list=None
                     None
     '''
     if concurrent_execution:
-        process = Process(target=write_test_table, args=(test_data, campaign_folder))
+        process = Process(target=__write_test_table, args=(test_data, campaign_folder))
         process.start()
         processes.append(process)
     else:
@@ -47,7 +47,7 @@ def write_query_table(test_data: list, campaign_folder: str, processes: list=Non
             scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
 
             if concurrent_execution:
-                process = Process(target=write_query_table, args=(test_scenario, scenario_path))
+                process = Process(target=__write_query_table, args=(test_scenario, scenario_path))
                 process.start()
                 processes.append(process)
             else:

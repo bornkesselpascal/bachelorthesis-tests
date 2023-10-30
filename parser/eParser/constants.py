@@ -21,4 +21,4 @@ generate_latex = False
 
 
 # EXECUTION OPTIONS
-concurrent_execution = False
+concurrent_execution = True

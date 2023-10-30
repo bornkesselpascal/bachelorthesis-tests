@@ -1,7 +1,6 @@
 import os
-from multiprocessing import Process
 from datetime import datetime
-from constants import client_folder, server_folder, output_folder
+from constants import client_folder, server_folder, output_folder, concurrent_execution
 from parsing import parse_description_file, parse_result_file, parse_query_messages
 from file_management import validate_test_folder, check_server_data
 from tablemaker import write_test_table, write_query_table
@@ -74,18 +73,14 @@ write_query_table(test_data, campaign_folder, processes)
 
 # Create graphs:
 #   - campaign
-#       - packet loss per datagram size
-#       - packet loss per test case (colored bars)
-#   - test scenario
-#       - packet drops (per X) histogram
-#       - packet drops over time
-
+#   - scenario (only if query messages are available)
 create_campaign_graphs(test_data, campaign_folder, processes)
 create_scenario_graphs(test_data, campaign_folder, processes)
 
-for process in processes:
-    process.join()
 
+# End the execution of eParser
+if concurrent_execution:
+    for process in processes:
+        process.join()
 
-# Print end message
 print(f'Finished eParser... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')
