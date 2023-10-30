@@ -1,9 +1,10 @@
 import os
 from multiprocessing import Process
+from datetime import datetime
 from constants import client_folder, server_folder, output_folder
 from parsing import *
 from file_management import *
-from tablemaker import *
+from tablemaker import write_test_table, write_query_table
 from graphs import *
 
 
@@ -67,20 +68,8 @@ test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connect
     
 
 # Write the test data to a csv file and create query overview if possible
-
-write_test_table(test_data, campaign_folder)
-
-process = Process(target=write_test_table, args=(test_data, campaign_folder))
-process.start()
-processes.append(process)
-
-for test_scenario in test_data:
-    if test_scenario[3] is not None:
-        scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
-
-        process = Process(target=write_query_table, args=(test_scenario, scenario_path))
-        process.start()
-        processes.append(process)
+write_test_table(test_data, campaign_folder, processes)
+write_query_table(test_data, campaign_folder, processes)
 
 
 # Create graphs:
