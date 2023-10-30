@@ -1,4 +1,5 @@
 import os
+import math
 from multiprocessing import Process
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator, FuncFormatter
@@ -32,20 +33,20 @@ def create_campaign_graphs(test_data: list, campaign_folder: str, processes: lis
                     None
     '''
     if concurrent_execution:
-        process = Process(target=__plot_campaign_loss_per_datagram_size, args=(test_data, campaign_folder))
-        process.start()
-        processes.append(process)
-
-        process = Process(target=__plot_campaign_loss_per_cycle_time, args=(test_data, campaign_folder))
+        process = Process(target=__prepare_and_create_campaign_graphs, args=(test_data, campaign_folder))
         process.start()
         processes.append(process)
     else:
-        __plot_campaign_loss_per_datagram_size(test_data, campaign_folder)
-        __plot_campaign_loss_per_cycle_time(test_data, campaign_folder)
+        __prepare_and_create_campaign_graphs(test_data, campaign_folder)
+
+
+def __prepare_and_create_campaign_graphs(test_data: list, campaign_folder: str) -> None:
+    __plot_campaign_loss_per_datagram_size(test_data, campaign_folder)
+    __plot_campaign_diagr2(test_data, campaign_folder)
 
 
 def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) -> None:
-    diagram_name = 'loss_per_datagram_size'
+    diagram_name = 'campaign-diagr1__cases_by_losses_and_datagram'
 
     # Set the style
     sns.set_style("whitegrid")
@@ -88,27 +89,29 @@ def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) ->
 
         losses_per_size[datagram_size] = loss_list
 
-    sorted_losses_per_size = {k: losses_per_size[k] for k in sorted(losses_per_size, reverse=True)}
+    sorted_losses_per_size = {k: losses_per_size[k] for k in sorted(losses_per_size, reverse=False)}
+
 
     # Create a bar chart for each datagram size
-    bar_width = 0.55                                            # width of the bars
+    bar_width = 0.2
     colors = ['lightgray', 'steelblue', '#9fcc9f', '#ffb3e6']   # colors for the bars
-
-    r = np.arange(len(x_labels))
-    bottom_values = np.zeros(len(x_labels))
+    index = np.arange(len(x_labels))
 
     _, ax = plt.subplots(figsize=(12, 5))
     for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
-        ax.bar(r, values, bottom=bottom_values, color=colors[idx % len(colors)], edgecolor='black', width=bar_width, label=f"{size} Byte", alpha=0.7)
-        bottom_values = [i+j for i, j in zip(bottom_values, values)]
+        ax.bar(index + bar_width * idx, values, bar_width, color=colors[idx % len(colors)], edgecolor='black', label=f"{size} Byte", alpha=0.7)
 
     # Add axis labels and titles
-    ax.set_xlabel('Packet Losses (Percentage)')
-    ax.set_ylabel('Test Cases (Number of Test Cases)')
-    ax.set_title('Packet Loss Ratio of all Test Cases (across all Datagram Sizes and Cycle Times)')
-    ax.set_xticks(r, x_labels)
-    ax.legend(loc='upper left', frameon=False)
+    ax.set_title('Test Cases by Packet Loss Ratio and Datagram Size (across all Cycle Times)')
+    ax.set_xlabel('Packet Loss Ratio')
+    ax.set_ylabel('Test Cases')
+    ax.legend(loc='upper right', frameon=True, title='Datagram Size')
+    ax.set_xticks(index + bar_width, [f"{x_label} %" for x_label in x_labels])
     ax.yaxis.set_major_locator(MaxNLocator(integer=True))
+
+    max_value = max([max(values) for values in sorted_losses_per_size.values()])
+    plt.ylim(0, math.ceil(max_value / 0.78))
+
     plt.tight_layout()
 
     # Save the diagram
@@ -121,7 +124,7 @@ def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) ->
     plt.close()
 
 
-def __plot_campaign_loss_per_cycle_time(test_data: list, output_path: str) -> None:
+def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
     diagram_name = 'campaign-diagr2__losses_by_cycle_and_datagram'
 
     # Set the style
@@ -171,8 +174,8 @@ def __plot_campaign_loss_per_cycle_time(test_data: list, output_path: str) -> No
     ax.legend(loc='upper right', frameon=True, title='Datagram Size')
     ax.set_xticks(index + bar_width, [f"{(cycle_time / 1000):.1f} \u03bcs" for cycle_time in cycle_times])
 
-    max_percentage = max([max(values) for values in sorted_losses_per_size.values()])
-    plt.ylim(0, max_percentage + 2 if max_percentage + 2 < 100 else 100)
+    max_value = max([max(values) for values in sorted_losses_per_size.values()])
+    plt.ylim(0, math.ceil(max_value / 0.78))
 
     def percent_formatter(x, _):
         return f"{x:.0f}%"
