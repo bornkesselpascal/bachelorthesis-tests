@@ -9,6 +9,19 @@ from constants import concurrent_execution, generate_excel
 
 
 def write_test_table(test_data: list, campaign_folder: str, processes: list=None) -> None:
+    '''
+    Creates a table with all test scenarios and their results. Analyzes the data and adds remarks
+    if necessary. Checks the NIC and UDP statistics for losses and add hints. Saves the table as
+    a CSV file and as an Excel file (optional).
+
+            Parameters:
+                    test_data (list): List of parsed test scenarios
+                    campaign_folder (str): Path to the folder where the table should be saved
+                    processes (list): List of processes (optional, used for concurrent execution)
+
+            Returns:
+                    None
+    '''
     if concurrent_execution:
         process = Process(target=write_test_table, args=(test_data, campaign_folder))
         process.start()
@@ -17,6 +30,18 @@ def write_test_table(test_data: list, campaign_folder: str, processes: list=None
         __write_test_table(test_data, campaign_folder)
 
 def write_query_table(test_data: list, campaign_folder: str, processes: list=None) -> None:
+    '''
+    Creates a table with all query messages and their responses and timestamps. Saves the table as
+    a CSV file and as an Excel file (optional).
+
+            Parameters:
+                    test_data (list): List of parsed test scenarios
+                    campaign_folder (str): Path to the folder where the table should be saved
+                    processes (list): List of processes (optional, used for concurrent execution)
+
+            Returns:
+                    None
+    '''
     for test_scenario in test_data:
         if test_scenario[3] is not None:
             scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
@@ -31,7 +56,7 @@ def write_query_table(test_data: list, campaign_folder: str, processes: list=Non
 
 
 def __write_test_table(test_data: list, output_path: str) -> None:
-    filename = os.path.join(output_path, f"campaign_overview.csv")
+    filename = os.path.join(output_path, "campaign_overview.csv")
 
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
@@ -46,7 +71,7 @@ def __write_test_table(test_data: list, output_path: str) -> None:
                          'Pakets [total]', 'PPS [udp]', 'PPS [ip]', 'Bandwidth [net](Mbps)', 'Bandwidth (gross)[Mbps]',
                          'Timer Misses',
                          'Remarks'])
-        
+
         # Write content
         for scenario in test_data:
             scenario_data = __get_scenario_data(scenario)
@@ -60,7 +85,7 @@ def __get_scenario_data(scenario: tuple) -> list:
     scenario_server_results = scenario[2]
 
     scenario_data = list()
-   
+
     # DURATION (Check if precise duration measurement was used)
     if scenario_client_results['report']['duration'] == -1:
         duration = scenario_description['duration']
