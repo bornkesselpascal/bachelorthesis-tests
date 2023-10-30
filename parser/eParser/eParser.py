@@ -5,7 +5,7 @@ from constants import client_folder, server_folder, output_folder
 from parsing import parse_description_file, parse_result_file, parse_query_messages
 from file_management import validate_test_folder, check_server_data
 from tablemaker import write_test_table, write_query_table
-from graphs import *
+from graphs import create_campaign_graphs, create_scenario_graphs
 
 
 campaign_name = 'test'
@@ -80,16 +80,8 @@ write_query_table(test_data, campaign_folder, processes)
 #       - packet drops (per X) histogram
 #       - packet drops over time
 
-plot_campaign_loss_per_datagram_size(test_data, campaign_folder)
-plot_campaign_loss_per_cycle_time(test_data, campaign_folder)       # FIXME: not implemented
-
-for test_scenario in test_data:
-    if test_scenario[3] is not None:
-        scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
-
-        process = Process(target=create_scenario_graphs, args=(test_scenario, scenario_path))
-        process.start()
-        processes.append(process)
+create_campaign_graphs(test_data, campaign_folder, processes)
+create_scenario_graphs(test_data, campaign_folder, processes)
 
 for process in processes:
     process.join()
