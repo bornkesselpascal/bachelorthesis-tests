@@ -2,7 +2,20 @@ import xml.etree.ElementTree as ET
 import os
 from constants import test_description_file, test_results_file
 
-def parse_result_file(path) -> dict:
+def parse_result_file(path: str) -> dict:
+    '''
+    Parses the test results file and returns the data as a dictionary. The dictionary contains the
+    following keys: 'status', 'report', 'ethtool_statistic', 'ip_statistic', 'netstat_statistic'.
+    The values of the keys are dictionaries themselves. The 'report' dictionary contains the
+    following keys: 'total', 'losses', 'timer_misses', 'duration'. The duration is -1 if no value is
+    present in the test results file.
+
+            Parameters:
+                    path (str): Path to the test results file
+
+            Returns:
+                    results (dict): Dictionary containing the test results
+    '''
     xml_file = os.path.join(path, test_results_file)
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -32,7 +45,7 @@ def parse_result_file(path) -> dict:
 
 
     # STATISTICS <ethtool_statistic>
-    ethtool_statistic = {}
+    ethtool_statistic = dict()
     ethtool_statistic_root = root.find('ethtool_statistic')
     if ethtool_statistic_root is not None:
         for child in ethtool_statistic_root:
@@ -44,13 +57,13 @@ def parse_result_file(path) -> dict:
 
 
     # STATISTICS <ip_statistic>
-    ip_statistic = {}
+    ip_statistic = dict()
     ip_statistic_root = root.find('ip_statistic')
     if ip_statistic_root is not None:
         for child in root.find('ip_statistic'):
             start = int(child.find('start').text)
             end = int(child.find('end').text)
-            
+
             if 'mtu' == child.tag:
                 ip_statistic[child.tag] = end
             else:
@@ -60,7 +73,7 @@ def parse_result_file(path) -> dict:
 
 
     # STATISTICS <netstat_statistic>
-    netstat_statistic = {}
+    netstat_statistic = dict()
     netstat_root = root.find('netstat_statistic')
     if netstat_root is not None:
         for child in netstat_root:
@@ -74,14 +87,25 @@ def parse_result_file(path) -> dict:
     return results
 
 
-def parse_query_messages(path) -> list:
+def parse_query_messages(path: str) -> list:
+    '''
+    Parses the query messages from the test results file and returns them as a list of dictionaries.
+    Each dictionary contains the following keys: 'losses', 'total', 'timestamp', 'difference'. The
+    list is sorted by timestamp.
+
+            Parameters:
+                    path (str): Path to the test results file
+
+            Returns:
+                    reports (list): List of dictionaries containing the query messages
+    '''
     xml_file = os.path.join(path, test_results_file)
     tree = ET.parse(xml_file)
     root = tree.getroot()
     query_root = root.find('custom').find('query')
     if query_root is None:
         return None
-    
+
     reports = list()
 
 
@@ -100,7 +124,7 @@ def parse_query_messages(path) -> list:
             difference = losses - reports[-1]['losses']
         else:
             difference = losses
-        
+
         reports.append({
             'losses': losses,
             'total': total,
@@ -109,9 +133,20 @@ def parse_query_messages(path) -> list:
         })
 
     return reports
-    
+
 
 def parse_description_file(path) -> dict:
+    '''
+    Parses the test description file and returns the data as a dictionary. The dictionary contains
+    the following keys: 'metadata', 'duration', 'connection', 'interfaces', 'stress'. The function
+    can only parse description files of tests executed using the 'CUSTOM' method.
+
+            Parameters:
+                    path (str): Path to the test results file
+
+            Returns:
+                    results (dict): Dictionary containing the test results
+    '''
     xml_file = os.path.join(path, test_description_file)
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -142,7 +177,7 @@ def parse_description_file(path) -> dict:
         connection['port'] = int(connection_root.find('port').text)
         connection['cycle_time'] = int(connection_root.find('gap').text)
         connection['datagram_size'] = int(connection_root.find('datagram').find('size').text)
-        connection['qos'] = (connection_root.find('qos').text == 'true')
+        connection['qos'] = connection_root.find('qos').text == 'true'
 
     description['connection'] = connection
 

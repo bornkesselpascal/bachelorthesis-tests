@@ -2,8 +2,8 @@ import os
 from multiprocessing import Process
 from datetime import datetime
 from constants import client_folder, server_folder, output_folder
-from parsing import *
-from file_management import *
+from parsing import parse_description_file, parse_result_file, parse_query_messages
+from file_management import validate_test_folder, check_server_data
 from tablemaker import write_test_table, write_query_table
 from graphs import *
 
@@ -38,7 +38,7 @@ for test_folder in os.listdir(client_folder):
     test_folder_client = os.path.join(client_folder, test_folder)
 
     # Check if test folder is valid (contains test_description.xml and test_results.xml)
-    if False == validate_test_folder(test_folder_client):
+    if not validate_test_folder(test_folder_client):
         continue
     print(f'Processing test scenario {test_folder}...')
 
@@ -65,7 +65,7 @@ for test_folder in os.listdir(client_folder):
 
 # Sort the list after 'cycle_time' and then after 'datagram_size' (both in description)
 test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connection']['cycle_time']))
-    
+
 
 # Write the test data to a csv file and create query overview if possible
 write_test_table(test_data, campaign_folder, processes)
@@ -94,6 +94,6 @@ for test_scenario in test_data:
 for process in processes:
     process.join()
 
- 
+
 # Print end message
 print(f'Finished eParser... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')
