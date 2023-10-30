@@ -8,17 +8,16 @@ from constants import generate_histogram, generate_latex, generate_png, concurre
 from data_format import format_query
 
 
-
-#                                  _                                     _         
-#                                 (_)                                   | |        
-#   ___ __ _ _ __ ___  _ __   __ _ _  __ _ _ __     __ _ _ __ __ _ _ __ | |__  ___ 
+#                                  _                                     _
+#                                 (_)                                   | |
+#   ___ __ _ _ __ ___  _ __   __ _ _  __ _ _ __     __ _ _ __ __ _ _ __ | |__  ___
 #  / __/ _` | '_ ` _ \| '_ \ / _` | |/ _` | '_ \   / _` | '__/ _` | '_ \| '_ \/ __|
 # | (_| (_| | | | | | | |_) | (_| | | (_| | | | | | (_| | | | (_| | |_) | | | \__ \
 #  \___\__,_|_| |_| |_| .__/ \__,_|_|\__, |_| |_|  \__, |_|  \__,_| .__/|_| |_|___/
-#                     | |             __/ |         __/ |         | |              
-#                     |_|            |___/         |___/          |_|                         
+#                     | |             __/ |         __/ |         | |
+#                     |_|            |___/         |___/          |_|
 
-def create_campaign_graphs(test_data: list, campaign_folder: str, processes: list=None) -> None:
+def create_campaign_graphs(test_data: list, campaign_folder: str, processes: list = None) -> None:
     '''
     Creates the graphs for the campaign. This includes:
         - Packet loss per datagram size
@@ -43,6 +42,7 @@ def create_campaign_graphs(test_data: list, campaign_folder: str, processes: lis
     else:
         __plot_campaign_loss_per_datagram_size(test_data, campaign_folder)
         __plot_campaign_loss_per_cycle_time(test_data, campaign_folder)
+
 
 def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) -> None:
     diagram_name = 'loss_per_datagram_size'
@@ -90,7 +90,6 @@ def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) ->
 
     sorted_losses_per_size = {k: losses_per_size[k] for k in sorted(losses_per_size, reverse=True)}
 
-
     # Create a bar chart for each datagram size
     bar_width = 0.55                                            # width of the bars
     colors = ['lightgray', 'steelblue', '#9fcc9f', '#ffb3e6']   # colors for the bars
@@ -101,8 +100,7 @@ def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) ->
     _, ax = plt.subplots(figsize=(12, 5))
     for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
         ax.bar(r, values, bottom=bottom_values, color=colors[idx % len(colors)], edgecolor='black', width=bar_width, label=f"{size} Byte", alpha=0.7)
-        bottom_values = [i+j for i,j in zip(bottom_values, values)]
-
+        bottom_values = [i+j for i, j in zip(bottom_values, values)]
 
     # Add axis labels and titles
     ax.set_xlabel('Packet Losses (Percentage)')
@@ -122,8 +120,9 @@ def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) ->
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
+
 def __plot_campaign_loss_per_cycle_time(test_data: list, output_path: str) -> None:
-    diagram_name = 'loss_per_cycle_time'
+    diagram_name = 'campaign-diagr2__losses_by_cycle_and_datagram'
 
     # Set the style
     sns.set_style("whitegrid")
@@ -160,17 +159,20 @@ def __plot_campaign_loss_per_cycle_time(test_data: list, output_path: str) -> No
     for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
         bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors[idx % len(colors)], edgecolor='black', label=f"{size} Byte", alpha=0.7))
 
-    for bar in bars:
-        for entry in bar:
+    for record in bars:
+        for entry in record:
             yval = entry.get_height()
             plt.text(entry.get_x() + entry.get_width()/2., yval + 0.01, f"{yval:.2f}%", ha='center', va='bottom')
 
-    # Add axis labels and titles    
+    # Add axis labels and titles
     ax.set_title('Packet Losses by Cycle Time and Datagram Size')
     ax.set_xlabel('Cycle Time')
     ax.set_ylabel('Packet Loss Ratio')
-    ax.legend(loc='upper right', frameon=False)
-    ax.set_xticks(index + bar_width, [f"{(cycle_time / 1000):.1f} $\mu$s" for cycle_time in cycle_times])
+    ax.legend(loc='upper right', frameon=True, title='Datagram Size')
+    ax.set_xticks(index + bar_width, [f"{(cycle_time / 1000):.1f} \u03bcs" for cycle_time in cycle_times])
+
+    max_percentage = max([max(values) for values in sorted_losses_per_size.values()])
+    plt.ylim(0, max_percentage + 2 if max_percentage + 2 < 100 else 100)
 
     def percent_formatter(x, _):
         return f"{x:.0f}%"
@@ -188,24 +190,23 @@ def __plot_campaign_loss_per_cycle_time(test_data: list, output_path: str) -> No
     plt.close()
 
 
-
-#                                _                               _         
-#                               (_)                             | |        
-#  ___  ___ ___ _ __   __ _ _ __ _  ___     __ _ _ __ __ _ _ __ | |__  ___ 
+#                                _                               _
+#                               (_)                             | |
+#  ___  ___ ___ _ __   __ _ _ __ _  ___     __ _ _ __ __ _ _ __ | |__  ___
 # / __|/ __/ _ \ '_ \ / _` | '__| |/ _ \   / _` | '__/ _` | '_ \| '_ \/ __|
 # \__ \ (_|  __/ | | | (_| | |  | | (_) | | (_| | | | (_| | |_) | | | \__ \
 # |___/\___\___|_| |_|\__,_|_|  |_|\___/   \__, |_|  \__,_| .__/|_| |_|___/
-#                                           __/ |         | |              
-#                                          |___/          |_|              
+#                                           __/ |         | |
+#                                          |___/          |_|
 
-def create_scenario_graphs(test_data: list, campaign_folder: str, processes: list=None) -> None:
+def create_scenario_graphs(test_data: list, campaign_folder: str, processes: list = None) -> None:
     '''
     Creates the graphs for each test scenario. This includes:
         - Histogram of packet losses
         - Packet losses over time
         - Sent and received packets over time
         - Packets per second over time / Packets per query over time
-    
+
     Note that the diagrams are only created if the test scenario contains query messages. Otherwise
     the diagrams are skipped.
 
@@ -228,7 +229,8 @@ def create_scenario_graphs(test_data: list, campaign_folder: str, processes: lis
             else:
                 __prepare_and_create_scenario_graphs(test_scenario, scenario_path)
 
-def __prepare_and_create_scenario_graphs(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
+
+def __prepare_and_create_scenario_graphs(test_scenario: tuple, output_path: str) -> None:
     query = format_query(test_scenario[3].copy(), test_scenario[1]['report']['duration'], test_scenario[1]['report']['losses'], test_scenario[1]['report']['total'])
     current_scenario = (test_scenario[0], test_scenario[1], test_scenario[2], query)
 
@@ -239,7 +241,7 @@ def __prepare_and_create_scenario_graphs(test_scenario: tuple((dict, dict, dict,
     __plot_scenario_ppq_over_time(current_scenario, output_path)
 
 
-def __plot_scenario_histogram_losses(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
+def __plot_scenario_histogram_losses(test_scenario: tuple, output_path: str) -> None:
     if not generate_histogram:
         return
 
@@ -265,7 +267,7 @@ def __plot_scenario_histogram_losses(test_scenario: tuple((dict, dict, dict, lis
     # Labels, title, and other configurations
     ax.set_xlabel('Packet Losses per 100000 Packets (Number of Packets)')
     ax.set_ylabel('Frequency')
-    #ax.set_yscale('log')
+    # ax.set_yscale('log')
     ax.set_title('Frequency Analysis of Packet Losses')
     ax.set_xticks(range(0, max(differences_list) + 10, 10))
     plt.tight_layout()
@@ -279,7 +281,8 @@ def __plot_scenario_histogram_losses(test_scenario: tuple((dict, dict, dict, lis
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
-def __plot_scenario_losses_over_time(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
+
+def __plot_scenario_losses_over_time(test_scenario: tuple, output_path: str) -> None:
     diagram_name = 'losses_time'
 
     # Set the style
@@ -301,7 +304,7 @@ def __plot_scenario_losses_over_time(test_scenario: tuple((dict, dict, dict, lis
     ax.fill_between(timestamps, difference, color='lightgray', edgecolor='black', alpha=0.6)
     ax.set_xlabel('Time (Seconds)')
     ax.set_ylabel('Lost Packets (Number of Packets)')
-    #ax.set_yscale('log')
+    # ax.set_yscale('log')
     ax.set_title('Temporal Distribution of Packet Loss')
 
     # Save the diagram
@@ -313,7 +316,8 @@ def __plot_scenario_losses_over_time(test_scenario: tuple((dict, dict, dict, lis
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
-def __plot_scenario_packages_over_time(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
+
+def __plot_scenario_packages_over_time(test_scenario: tuple, output_path: str) -> None:
     diagram_name = 'packages_time'
 
     # Set the style
@@ -349,7 +353,8 @@ def __plot_scenario_packages_over_time(test_scenario: tuple((dict, dict, dict, l
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
-def __plot_scenario_pps_over_time(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
+
+def __plot_scenario_pps_over_time(test_scenario: tuple, output_path: str) -> None:
     diagram_name = 'pps_time'
 
     # Set the style
@@ -400,7 +405,8 @@ def __plot_scenario_pps_over_time(test_scenario: tuple((dict, dict, dict, list))
     plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
-def __plot_scenario_ppq_over_time(test_scenario: tuple((dict, dict, dict, list)), output_path: str) -> None:
+
+def __plot_scenario_ppq_over_time(test_scenario: tuple, output_path: str) -> None:
     diagram_name = 'ppq_time'
 
     # Set the style
