@@ -14,6 +14,7 @@ test_results_file = 'test_results.xml'
 generate_excel = True
 
 # DIAGRAM OPTIONS
+colors = {80: 'lightgray', 8900: 'steelblue', 65000: '#9fcc9f'}
 generate_histogram = False
 
 generate_png = False
