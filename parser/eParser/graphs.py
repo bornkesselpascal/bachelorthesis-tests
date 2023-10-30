@@ -1,7 +1,7 @@
 import os
 from multiprocessing import Process
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MaxNLocator
+from matplotlib.ticker import MaxNLocator, FuncFormatter
 import numpy as np
 import seaborn as sns
 from constants import generate_histogram, generate_latex, generate_png, concurrent_execution
@@ -55,7 +55,7 @@ def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) ->
 
     # Fetch the data for the visualization
     x_labels = ['0', ']0;10]', ']10;20]', ']20;30]', ']30;40]', ']40;50]', ']50;60]', ']60;70]', ']70;80]', ']80;90]', ']90;100]']
-    losses_per_size = dict(list())
+    losses_per_size = dict()
 
     # Get all packet sizes
     for test_scenario in test_data:
@@ -124,7 +124,68 @@ def __plot_campaign_loss_per_datagram_size(test_data: list, output_path: str) ->
 
 def __plot_campaign_loss_per_cycle_time(test_data: list, output_path: str) -> None:
     diagram_name = 'loss_per_cycle_time'
-    pass
+
+    # Set the style
+    sns.set_style("whitegrid")
+    sns.set_context("paper", font_scale=1, rc={"lines.linewidth": 2})
+    plt.rc('text', usetex=False)
+    plt.rc('font', family='serif')
+
+    # Fetch the data for the visualization
+    cycle_times = sorted(list(set(test_scenario[0]['connection']['cycle_time'] for test_scenario in test_data)))
+    losses_per_size = dict()
+
+    # Get all packet sizes
+    for test_scenario in test_data:
+        current_datagram_size = test_scenario[0]['connection']['datagram_size']
+        current_cycle_time = test_scenario[0]['connection']['cycle_time']
+        current_loss_ratio = (test_scenario[1]['report']['losses'] / test_scenario[1]['report']['total']) * 100
+
+        current_loss_list = losses_per_size.get(current_datagram_size, list([0]*len(cycle_times)))
+        for idx, cycle_time in enumerate(cycle_times):
+            if cycle_time == current_cycle_time:
+                current_loss_list[idx] = current_loss_ratio
+
+        losses_per_size[current_datagram_size] = current_loss_list
+
+    sorted_losses_per_size = {k: losses_per_size[k] for k in sorted(losses_per_size, reverse=False)}
+
+    # Create a bar chart for each datagram size
+    bar_width = 0.2
+    colors = ['lightgray', 'steelblue', '#9fcc9f', '#ffb3e6']   # colors for the bars
+    index = np.arange(len(cycle_times))
+
+    bars = list()
+    _, ax = plt.subplots(figsize=(12, 5))
+    for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
+        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors[idx % len(colors)], edgecolor='black', label=f"{size} Byte", alpha=0.7))
+
+    for bar in bars:
+        for entry in bar:
+            yval = entry.get_height()
+            plt.text(entry.get_x() + entry.get_width()/2., yval + 0.01, f"{yval:.2f}%", ha='center', va='bottom')
+
+    # Add axis labels and titles    
+    ax.set_title('Packet Losses by Cycle Time and Datagram Size')
+    ax.set_xlabel('Cycle Time')
+    ax.set_ylabel('Packet Loss Ratio')
+    ax.legend(loc='upper right', frameon=False)
+    ax.set_xticks(index + bar_width, [f"{(cycle_time / 1000):.1f} $\mu$s" for cycle_time in cycle_times])
+
+    def percent_formatter(x, _):
+        return f"{x:.0f}%"
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(percent_formatter))
+
+    plt.tight_layout()
+
+    # Save the diagram
+    if generate_latex:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
+    if generate_png:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
+
+    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    plt.close()
 
 
 
@@ -327,6 +388,7 @@ def __plot_scenario_pps_over_time(test_scenario: tuple((dict, dict, dict, list))
     ax.set_xlabel('Time (Seconds)')
     ax.set_ylabel('Packets (Number of Packets)')
     ax.set_title('Temporal Distribution of Sent and Received UDP Packets')
+    ax.set_yscale('log')
     ax.legend(loc='upper left', frameon=False)
 
     # Save the diagram
