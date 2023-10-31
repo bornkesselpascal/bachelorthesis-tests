@@ -83,7 +83,7 @@ def create_datagramsize_graphs(test_data: list, campaign_folder: str, processes:
                     None
     '''
     datagramsizes = list(set(test_scenario[0]['connection']['datagram_size'] for test_scenario in test_data))
-    datagramsize_path = os.path.join(campaign_folder, "datagramsize")
+    datagramsize_path = os.path.join(campaign_folder, "datagram")
     if not os.path.exists(datagramsize_path):
         os.makedirs(datagramsize_path)
     

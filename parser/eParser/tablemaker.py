@@ -22,12 +22,16 @@ def write_test_table(test_data: list, campaign_folder: str, processes: list=None
             Returns:
                     None
     '''
+    campaign_path = os.path.join(campaign_folder, "campaign")
+    if not os.path.exists(campaign_path):
+        os.makedirs(campaign_path)
+
     if concurrent_execution:
-        process = Process(target=__write_test_table, args=(test_data, campaign_folder))
+        process = Process(target=__write_test_table, args=(test_data, campaign_path))
         process.start()
         processes.append(process)
     else:
-        __write_test_table(test_data, campaign_folder)
+        __write_test_table(test_data, campaign_path)
 
 def write_query_table(test_data: list, campaign_folder: str, processes: list=None) -> None:
     '''
@@ -42,16 +46,20 @@ def write_query_table(test_data: list, campaign_folder: str, processes: list=Non
             Returns:
                     None
     '''
+    scenario_path = os.path.join(campaign_folder, "scenario")
+    if not os.path.exists(scenario_path):
+        os.makedirs(scenario_path)
+
     for test_scenario in test_data:
         if test_scenario[3] is not None:
-            scenario_path = os.path.join(campaign_folder, f"{test_scenario[0]['metadata']['t_uid']}")
+            scenario_subpath = os.path.join(scenario_path, f"{test_scenario[0]['metadata']['t_uid']}")
 
             if concurrent_execution:
-                process = Process(target=__write_query_table, args=(test_scenario, scenario_path))
+                process = Process(target=__write_query_table, args=(test_scenario, scenario_subpath))
                 process.start()
                 processes.append(process)
             else:
-                __write_query_table(test_scenario, scenario_path)
+                __write_query_table(test_scenario, scenario_subpath)
 
 
 
