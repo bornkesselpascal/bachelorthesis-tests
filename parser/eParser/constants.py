@@ -12,6 +12,8 @@ test_results_file = 'test_results.xml'
 
 # TABLE OPTIONS
 generate_excel = True
+font_name = 'Arial'
+monspace_font_name = 'Consolas'
 
 # DIAGRAM OPTIONS
 colors = {'datagramsize': {80: 'lightgray', 8900: 'steelblue', 65000: '#9fcc9f',},
