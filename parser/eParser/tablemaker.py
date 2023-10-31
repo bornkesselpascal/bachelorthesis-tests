@@ -8,7 +8,7 @@ from data_format import format_query
 from constants import concurrent_execution, generate_excel
 
 
-def write_test_table(test_data: list, campaign_folder: str, processes: list=None) -> None:
+def write_test_table(test_data: list, campaign_name: str, campaign_folder: str, processes: list=None) -> None:
     '''
     Creates a table with all test scenarios and their results. Analyzes the data and adds remarks
     if necessary. Checks the NIC and UDP statistics for losses and add hints. Saves the table as
@@ -27,11 +27,11 @@ def write_test_table(test_data: list, campaign_folder: str, processes: list=None
         os.makedirs(campaign_path)
 
     if concurrent_execution:
-        process = Process(target=__write_test_table, args=(test_data, campaign_path))
+        process = Process(target=__write_test_table, args=(test_data, campaign_name, campaign_path))
         process.start()
         processes.append(process)
     else:
-        __write_test_table(test_data, campaign_path)
+        __write_test_table(test_data, campaign_name, campaign_path)
 
 def write_query_table(test_data: list, campaign_folder: str, processes: list=None) -> None:
     '''
@@ -63,8 +63,8 @@ def write_query_table(test_data: list, campaign_folder: str, processes: list=Non
 
 
 
-def __write_test_table(test_data: list, output_path: str) -> None:
-    filename = os.path.join(output_path, "campaign_overview.csv")
+def __write_test_table(test_data: list, campaign_name: str, output_path: str) -> None:
+    filename = os.path.join(output_path, f"{campaign_name}_campaign_overview.csv")
 
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)

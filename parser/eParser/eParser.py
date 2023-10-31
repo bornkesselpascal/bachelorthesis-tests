@@ -67,7 +67,7 @@ test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connect
 
 
 # Write the test data to a csv file and create query overview if possible
-write_test_table(test_data, campaign_folder, processes)
+write_test_table(test_data, campaign_name, campaign_folder, processes)
 write_query_table(test_data, campaign_folder, processes)
 
 
