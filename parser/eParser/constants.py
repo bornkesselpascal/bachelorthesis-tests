@@ -1,10 +1,8 @@
 import os
 
 # FOLDER NAMES
-results_folder = 'results_demo'
-client_folder = os.path.join(results_folder, 'client')
-server_folder = os.path.join(results_folder, 'server')
 output_folder = 'output'
+results_folder = 'results'
 
 # LOG NAMES
 test_description_file = 'test_description.xml'

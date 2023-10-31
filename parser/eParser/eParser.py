@@ -1,87 +1,111 @@
 import os
 from datetime import datetime
-from constants import client_folder, server_folder, output_folder, concurrent_execution
+from constants import output_folder, results_folder, concurrent_execution
 from parsing import parse_description_file, parse_result_file, parse_query_messages
 from file_management import validate_test_folder, check_server_data
 from tablemaker import write_test_table, write_query_table
 from graphs import create_campaign_graphs, create_scenario_graphs, create_datagramsize_graphs
 
 
-campaign_name = 'test'
+parent_folder = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Check if the results folder exists
-if not os.path.exists(client_folder):
-    print(f'ERROR: Folder {client_folder} does not exist!')
+# Output folder for the current execution
+commit_hash   = os.popen('git rev-parse HEAD').read().strip()[:7]
+timestamp     = datetime.now().strftime('%y%m%d_%H%M%S')
+output_folder = os.path.join(parent_folder, output_folder, f'{timestamp}_{commit_hash}')
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+# Results folder for the current execution
+result_folder = os.path.join(parent_folder, results_folder)
+if not os.path.exists(result_folder):
     exit(1)
 
-# Print start message
-print(f'Starting eParser... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')
-
-# Create campaign folder for the output
-current_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-campaign_folder = os.path.join(output_folder, f"{campaign_name}_{current_timestamp}")
-if not os.path.exists(campaign_folder):
-    os.makedirs(campaign_folder)
 
 
-# List of tuples containing the following data for each test scenario:
-#   - description:    dict
-#   - client_results: dict
-#   - server_results: dict or None
-#   - query_messages: list (of dicts) or None
-test_data = list()
-processes = list()
+def __parse_campaign(name: str) -> None:
+    # Check if the results folder exists
+    data_folder   = os.path.join(result_folder, name)
+    client_folder = os.path.join(data_folder, 'client')
+    server_folder = os.path.join(data_folder, 'server')
 
-# Parse all test scenarios and store the data in the list
-for test_folder in os.listdir(client_folder):
-    test_folder_client = os.path.join(client_folder, test_folder)
+    if not os.path.exists(client_folder):
+        # If no data is available, we stop here.
+        return
 
-    # Check if test folder is valid (contains test_description.xml and test_results.xml)
-    if not validate_test_folder(test_folder_client):
-        continue
-    print(f'Processing test scenario {test_folder}...')
+    # Print start message
+    print(f'Starting eParser for campaign {name}... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')
 
-    # Check if server data exists
-    server_data = check_server_data(server_folder, test_folder)
-    if server_data:
-        test_folder_server = os.path.join(server_folder, test_folder)
-
-    # Parse the test description file
-    description = parse_description_file(test_folder_client)
-
-    # Parse the test results files
-    client_results = parse_result_file(test_folder_client)
-    if server_data:
-        server_results = parse_result_file(test_folder_server)
-    else:
-        server_results = None
-
-    # Parse the query messages
-    query_messages = parse_query_messages(test_folder_client)
-
-    test_data.append((description, client_results, server_results, query_messages))
+    # Create campaign folder for the output
+    campaign_folder = os.path.join(output_folder, name)
+    if not os.path.exists(campaign_folder):
+        os.makedirs(campaign_folder)
 
 
-# Sort the list after 'cycle_time' and then after 'datagram_size' (both in description)
-test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connection']['cycle_time']))
+    # List of tuples containing the following data for each test scenario:
+    #   - description:    dict
+    #   - client_results: dict
+    #   - server_results: dict or None
+    #   - query_messages: list (of dicts) or None
+    test_data = list()
+    processes = list()
+
+    # Parse all test scenarios and store the data in the list
+    for test_folder in os.listdir(client_folder):
+        test_folder_client = os.path.join(client_folder, test_folder)
+
+        # Check if test folder is valid (contains test_description.xml and test_results.xml)
+        if not validate_test_folder(test_folder_client):
+            continue
+        print(f'Processing test scenario {test_folder}...')
+
+        # Check if server data exists
+        server_data = check_server_data(server_folder, test_folder)
+        if server_data:
+            test_folder_server = os.path.join(server_folder, test_folder)
+
+        # Parse the test description file
+        description = parse_description_file(test_folder_client)
+
+        # Parse the test results files
+        client_results = parse_result_file(test_folder_client)
+        if server_data:
+            server_results = parse_result_file(test_folder_server)
+        else:
+            server_results = None
+
+        # Parse the query messages
+        query_messages = parse_query_messages(test_folder_client)
+
+        test_data.append((description, client_results, server_results, query_messages))
 
 
-# Write the test data to a csv file and create query overview if possible
-write_test_table(test_data, campaign_name, campaign_folder, processes)
-write_query_table(test_data, campaign_folder, processes)
+    # Sort the list after 'cycle_time' and then after 'datagram_size' (both in description)
+    test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connection']['cycle_time']))
+
+    # Write the test data to a csv file and create query overview if possible
+    write_test_table(test_data, name, campaign_folder, processes)
+    write_query_table(test_data, campaign_folder, processes)
+
+    # Create graphs:
+    #   - campaign
+    #   - scenario (only if query messages are available)
+    #   - datagram size
+    create_campaign_graphs(test_data, campaign_folder, processes)
+    create_scenario_graphs(test_data, campaign_folder, processes)
+    create_datagramsize_graphs(test_data, campaign_folder, processes)
 
 
-# Create graphs:
-#   - campaign
-#   - scenario (only if query messages are available)
-create_campaign_graphs(test_data, campaign_folder, processes)
-create_scenario_graphs(test_data, campaign_folder, processes)
-create_datagramsize_graphs(test_data, campaign_folder, processes)
+    # End the execution of eParser
+    if concurrent_execution:
+        for process in processes:
+            process.join()
+
+    print(f'Finished eParser for campaign {name}... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')
 
 
-# End the execution of eParser
-if concurrent_execution:
-    for process in processes:
-        process.join()
 
-print(f'Finished eParser... (at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")})')
+# Process all campaigns in the results folder
+for test_campaign in os.listdir(result_folder):
+    if not test_campaign.endswith('_N'):
+        __parse_campaign(test_campaign)
