@@ -4,7 +4,7 @@ from constants import client_folder, server_folder, output_folder, concurrent_ex
 from parsing import parse_description_file, parse_result_file, parse_query_messages
 from file_management import validate_test_folder, check_server_data
 from tablemaker import write_test_table, write_query_table
-from graphs import create_campaign_graphs, create_scenario_graphs
+from graphs import create_campaign_graphs, create_scenario_graphs, create_datagramsize_graphs
 
 
 campaign_name = 'test'
@@ -76,6 +76,7 @@ write_query_table(test_data, campaign_folder, processes)
 #   - scenario (only if query messages are available)
 create_campaign_graphs(test_data, campaign_folder, processes)
 create_scenario_graphs(test_data, campaign_folder, processes)
+create_datagramsize_graphs(test_data, campaign_folder, processes)
 
 
 # End the execution of eParser

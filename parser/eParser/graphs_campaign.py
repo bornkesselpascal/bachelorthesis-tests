@@ -75,7 +75,7 @@ def __plot_campaign_diagr1(test_data: list, output_path: str) -> None:
 
     _, ax = plt.subplots(figsize=(12, 5))
     for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
-        ax.bar(index + bar_width * idx, values, bar_width, color=colors.get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7)
+        ax.bar(index + bar_width * idx, values, bar_width, color=colors['datagramsize'].get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7)
 
     # Add axis labels and titles
     ax.set_title('Test Cases by Packet Loss Ratio and Datagram Size (across all Cycle Times)')
@@ -135,7 +135,7 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
     bars = list()
     _, ax = plt.subplots(figsize=(12, 5))
     for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
-        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors.get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7))
+        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors['datagramsize'].get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7))
 
     for record in bars:
         for entry in record:

@@ -52,7 +52,7 @@ def __plot_scenario_diagr1(test_scenario: tuple, output_path: str) -> None:
     # Create the histogram
     # Creating the histogram
     _, ax = plt.subplots(figsize=(12, 5))
-    ax.hist(differences_list, bins=range(0, max(differences_list) + 2), align='left', color=colors.get(test_scenario[0]['connection']['datagram_size'], 'red'), edgecolor='black', alpha=0.7)
+    ax.hist(differences_list, bins=range(0, max(differences_list) + 2), align='left', color=colors['datagramsize'].get(test_scenario[0]['connection']['datagram_size'], 'red'), edgecolor='black', alpha=0.7)
 
     # Labels, title, and other configurations
     ax.set_xlabel('Packet Losses per 100000 Packets (Number of Packets)')
@@ -91,8 +91,8 @@ def __plot_scenario_diagr2(test_scenario: tuple, output_path: str) -> None:
 
     # Create the diagram
     _, ax = plt.subplots(figsize=(12, 5))
-    ax.fill_between(timestamps, totals, color='lightgray', label='Sent Packets', edgecolor='black', alpha=0.6)
-    ax.fill_between(timestamps, received, color='steelblue', label='Received Packets', edgecolor='black', alpha=0.7)
+    ax.fill_between(timestamps, totals, color=colors['paket_type']['sent'], label='Sent Packets', edgecolor='black', alpha=0.6)
+    ax.fill_between(timestamps, received, color=colors['paket_type']['received'], label='Received Packets', edgecolor='black', alpha=0.7)
     ax.set_xlabel('Time')
     ax.set_ylabel('Packets')
     ax.set_title('Temporal Distribution of Sent and Received UDP Packets')
@@ -196,15 +196,15 @@ def __plot_scenario_diagr4(test_scenario: tuple, output_path: str) -> None:
     # Create the diagram
     _, ax = plt.subplots(figsize=(12, 5))
 
-    ax.fill_between(timestamps, package_per_second['sent'], color='lightgray', label='Sent Packets', edgecolor='black', alpha=0.6)
-    ax.fill_between(timestamps, package_per_second['received'], color='steelblue', label='Received Packets', edgecolor='black', alpha=0.7)
+    ax.fill_between(timestamps, package_per_second['sent'], color=colors['paket_type']['sent'], label='Sent Packets', edgecolor='black', alpha=0.6)
+    ax.fill_between(timestamps, package_per_second['received'], color=colors['paket_type']['received'], label='Received Packets', edgecolor='black', alpha=0.7)
 
     if draw_packages_per_second:
         ax.set_title('Overview of Sent and Received UDP Packets per Second')
     else:
         ax.set_title('Overview of Sent and Received UDP Packets per Query Message')
 
-    ax.set_ylabel('Packets')
+    ax.set_ylabel('Packets per Second')
     ax.set_xlabel('Time')
     ax.legend(loc='upper right', frameon=True)
 
