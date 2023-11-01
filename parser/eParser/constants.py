@@ -15,6 +15,7 @@ monspace_font_name = 'Consolas'
 
 # DIAGRAM OPTIONS
 colors = {'datagramsize': {80: 'lightgray', 8900: 'steelblue', 65000: '#9fcc9f',},
+          'location': {'CLIENT': 'lightgray', 'SERVER': 'steelblue', 'BOTH': '#9fcc9f',},
           'paket_type': {'sent': 'lightgray', 'received': 'steelblue',},}
 generate_histogram = False
 

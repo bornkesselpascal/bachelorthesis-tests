@@ -20,6 +20,7 @@ from constants import generate_latex, generate_png, colors
 def _prepare_and_create_campaign_graphs(test_data: list, campaign_folder: str) -> None:
     __plot_campaign_diagr1(test_data, campaign_folder)
     __plot_campaign_diagr2(test_data, campaign_folder)
+    __plot_campaign_diagr3(test_data, campaign_folder)
 
 
 def __plot_campaign_diagr1(test_data: list, output_path: str) -> None:
@@ -117,7 +118,6 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
     for test_scenario in test_data:
         current_datagram_size = test_scenario[0]['connection']['datagram_size']
         current_cycle_time = test_scenario[0]['connection']['cycle_time']
-        current_loss_ratio = (test_scenario[1]['report']['losses'] / test_scenario[1]['report']['total']) * 100
 
         current_loss_list, current_total_list = losses_per_size.get(current_datagram_size, (list([0]*len(cycle_times)), list([0]*len(cycle_times))))
         for idx, cycle_time in enumerate(cycle_times):
@@ -156,6 +156,89 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
     ax.set_xticks(index + bar_width, [f"{(cycle_time / 1000):.1f} \u03bcs" for cycle_time in cycle_times])
 
     max_value = max([max(values) for values in sorted_ratio_per_size.values()])
+    plt.ylim(0, math.ceil(max_value / 0.78))
+
+    def percent_formatter(x, _):
+        return f"{x:.0f}%"
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(percent_formatter))
+
+    plt.tight_layout()
+
+    # Save the diagram
+    if generate_latex:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
+    if generate_png:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
+
+    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    plt.close()
+
+
+def __plot_campaign_diagr3(test_data: list, output_path: str) -> None:
+    diagram_name = 'campaign-diagr3__losses_by_stress'
+
+    # Get all stressors
+    stressors = sorted(list(set(test_scenario[0]['stress']['type'] for test_scenario in test_data)))
+    if len(stressors) == 1:
+        return
+    
+    # Set the style
+    sns.set_style("whitegrid")
+    sns.set_context("paper", font_scale=1, rc={"lines.linewidth": 2})
+    plt.rc('text', usetex=False)
+    plt.rc('font', family='serif')
+
+    # Fetch the data for the visualization
+    losses_per_stressor = dict()
+
+    # Get all packet sizes
+    for test_scenario in test_data:
+        current_stressor = test_scenario[0]['stress']['type']
+        current_location = test_scenario[0]['stress']['location']
+
+        current_loss_list, current_total_list = losses_per_stressor.get(current_location, (list([0]*len(stressors)), list([0]*len(stressors))))
+        for idx, stressor in enumerate(stressors):
+            if stressor == current_stressor:
+                current_loss_list[idx] += test_scenario[1]['report']['losses']
+                current_total_list[idx] += test_scenario[1]['report']['total']
+
+        losses_per_stressor[current_location] = (current_loss_list, current_total_list)
+
+    ratio_per_location = dict()
+    for location, (loss_list, total_list) in losses_per_stressor.items():
+        current_ratio_list = list([0]*len(stressors))
+        for idx, (loss, total) in enumerate(zip(loss_list, total_list)):
+            if total != 0:
+                current_ratio_list[idx] = (loss / total) * 100
+            else:
+                current_ratio_list[idx] = 0
+
+        ratio_per_location[location] = current_ratio_list
+
+    sorted_ratio_per_location = {k: ratio_per_location[k] for k in sorted(ratio_per_location, reverse=False)}
+
+    # Create a bar chart for each datagram size
+    bar_width = 0.2
+    index = np.arange(len(stressors))
+
+    bars = list()
+    _, ax = plt.subplots(figsize=(12, 5))
+    for idx, (location, values) in enumerate(sorted_ratio_per_location.items()):
+        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors['location'].get(location, 'red'), edgecolor='black', label=location, alpha=0.7))
+
+    for record in bars:
+        for entry in record:
+            yval = entry.get_height()
+            plt.text(entry.get_x() + entry.get_width()/2., yval + 0.01, f"{yval:.0f}%", ha='center', va='bottom')
+
+    # Add axis labels and titles
+    ax.set_title('Packet Losses by Stressor and Location')
+    ax.set_xlabel('Stressors')
+    ax.set_ylabel('Packet Loss Ratio')
+    ax.legend(loc='upper right', frameon=True, title='Location')
+    ax.set_xticks(index + bar_width, stressors)
+
+    max_value = max([max(values) for values in sorted_ratio_per_location.values()])
     plt.ylim(0, math.ceil(max_value / 0.78))
 
     def percent_formatter(x, _):
