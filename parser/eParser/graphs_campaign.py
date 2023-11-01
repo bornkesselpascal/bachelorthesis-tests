@@ -129,8 +129,14 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
 
     ratio_per_size = dict()
     for datagram_size, (loss_list, total_list) in losses_per_size.items():
-        ratio_per_size[datagram_size] = [(loss / total)*100 for loss, total in zip(loss_list, total_list)]
+        current_ratio_list = list([0]*len(cycle_times))
+        for idx, (loss, total) in enumerate(zip(loss_list, total_list)):
+            if total != 0:
+                current_ratio_list[idx] = (loss / total) * 100
+            else:
+                current_ratio_list[idx] = 0
 
+        ratio_per_size[datagram_size] = current_ratio_list
 
     sorted_ratio_per_size = {k: ratio_per_size[k] for k in sorted(ratio_per_size, reverse=False)}
 
