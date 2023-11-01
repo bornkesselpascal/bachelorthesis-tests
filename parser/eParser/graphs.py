@@ -24,7 +24,7 @@ def create_campaign_graphs(test_data: list, campaign_folder: str, processes: lis
     if not os.path.exists(campaign_path):
         os.makedirs(campaign_path)
 
-    if concurrent_execution:
+    if concurrent_execution():
         process = Process(target=_prepare_and_create_campaign_graphs, args=(test_data, campaign_path))
         process.start()
         processes.append(process)
@@ -61,7 +61,7 @@ def create_scenario_graphs(test_data: list, campaign_folder: str, processes: lis
             if not os.path.exists(scenario_subpath):
                 os.makedirs(scenario_subpath)
 
-            if concurrent_execution:
+            if concurrent_execution():
                 process = Process(target=_prepare_and_create_scenario_graphs, args=(test_scenario, scenario_subpath))
                 process.start()
                 processes.append(process)
@@ -89,7 +89,7 @@ def create_datagramsize_graphs(test_data: list, campaign_folder: str, processes:
     
     for datagramsize in datagramsizes:
 
-        if concurrent_execution:
+        if concurrent_execution():
             process = Process(target=_prepare_and_create_datagramsize_graphs, args=(test_data, datagramsize, datagramsize_path))
             process.start()
             processes.append(process)

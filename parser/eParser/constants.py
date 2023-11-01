@@ -23,4 +23,8 @@ generate_latex = False
 
 
 # EXECUTION OPTIONS
-concurrent_execution = True
+def concurrent_execution():
+    if os.name == 'nt' or (os.name == 'posix' and os.uname().sysname == 'Darwin'):
+        return False    # Windows or macOS
+    else:
+        return True     # Linux

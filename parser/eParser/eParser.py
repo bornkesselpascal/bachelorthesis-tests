@@ -26,6 +26,9 @@ if not os.path.exists(result_folder):
 def __parse_campaign(name: str) -> None:
     # Check if the results folder exists
     data_folder   = os.path.join(result_folder, name)
+    if not os.path.isdir(data_folder):
+        return
+
     client_folder = os.path.join(data_folder, 'client')
     server_folder = os.path.join(data_folder, 'server')
 
@@ -53,6 +56,8 @@ def __parse_campaign(name: str) -> None:
     # Parse all test scenarios and store the data in the list
     for test_folder in os.listdir(client_folder):
         test_folder_client = os.path.join(client_folder, test_folder)
+        if not os.path.isdir(test_folder_client):
+            continue
 
         # Check if test folder is valid (contains test_description.xml and test_results.xml)
         if not validate_test_folder(test_folder_client):
@@ -97,7 +102,7 @@ def __parse_campaign(name: str) -> None:
 
 
     # End the execution of eParser
-    if concurrent_execution:
+    if concurrent_execution():
         for process in processes:
             process.join()
 
@@ -107,5 +112,7 @@ def __parse_campaign(name: str) -> None:
 
 # Process all campaigns in the results folder
 for test_campaign in os.listdir(result_folder):
-    if not test_campaign.endswith('_N'):
-        __parse_campaign(test_campaign)
+    if test_campaign.endswith('_N') or test_campaign.startswith('.'):
+        continue
+    
+    __parse_campaign(test_campaign)

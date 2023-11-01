@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 parser/eParser/results/
 parser/eParser/output/
+.DS_Store
