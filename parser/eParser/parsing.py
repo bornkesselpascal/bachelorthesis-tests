@@ -177,7 +177,12 @@ def parse_description_file(path) -> dict:
         connection['port'] = int(connection_root.find('port').text)
         connection['cycle_time'] = int(connection_root.find('gap').text)
         connection['datagram_size'] = int(connection_root.find('datagram').find('size').text)
-        connection['qos'] = connection_root.find('qos').text == 'true'
+
+        qos = connection_root.find('qos')
+        if qos is not None:
+            connection['qos'] = qos.text == 'true'
+        else:
+            connection['qos'] = False
 
     description['connection'] = connection
 

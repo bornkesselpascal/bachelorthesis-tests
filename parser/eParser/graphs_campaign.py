@@ -119,14 +119,20 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
         current_cycle_time = test_scenario[0]['connection']['cycle_time']
         current_loss_ratio = (test_scenario[1]['report']['losses'] / test_scenario[1]['report']['total']) * 100
 
-        current_loss_list = losses_per_size.get(current_datagram_size, list([0]*len(cycle_times)))
+        current_loss_list, current_total_list = losses_per_size.get(current_datagram_size, (list([0]*len(cycle_times)), list([0]*len(cycle_times))))
         for idx, cycle_time in enumerate(cycle_times):
             if cycle_time == current_cycle_time:
-                current_loss_list[idx] = current_loss_ratio
+                current_loss_list[idx] += test_scenario[1]['report']['losses']
+                current_total_list[idx] += test_scenario[1]['report']['total']
 
-        losses_per_size[current_datagram_size] = current_loss_list
+        losses_per_size[current_datagram_size] = (current_loss_list, current_total_list)
 
-    sorted_losses_per_size = {k: losses_per_size[k] for k in sorted(losses_per_size, reverse=False)}
+    ratio_per_size = dict()
+    for datagram_size, (loss_list, total_list) in losses_per_size.items():
+        ratio_per_size[datagram_size] = [(loss / total)*100 for loss, total in zip(loss_list, total_list)]
+
+
+    sorted_ratio_per_size = {k: ratio_per_size[k] for k in sorted(ratio_per_size, reverse=False)}
 
     # Create a bar chart for each datagram size
     bar_width = 0.2
@@ -134,7 +140,7 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
 
     bars = list()
     _, ax = plt.subplots(figsize=(12, 5))
-    for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
+    for idx, (size, values) in enumerate(sorted_ratio_per_size.items()):
         bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors['datagramsize'].get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7))
 
     for record in bars:
@@ -149,7 +155,7 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
     ax.legend(loc='upper right', frameon=True, title='Datagram Size')
     ax.set_xticks(index + bar_width, [f"{(cycle_time / 1000):.1f} \u03bcs" for cycle_time in cycle_times])
 
-    max_value = max([max(values) for values in sorted_losses_per_size.values()])
+    max_value = max([max(values) for values in sorted_ratio_per_size.values()])
     plt.ylim(0, math.ceil(max_value / 0.78))
 
     def percent_formatter(x, _):

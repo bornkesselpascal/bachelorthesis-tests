@@ -38,22 +38,26 @@ def __plot_datagramsize_diagr1(test_data: list, datagramsize: int, output_path: 
     # Fetch the data for the visualization
     cycle_times = sorted(list(set(test_scenario[0]['connection']['cycle_time'] for test_scenario in test_data)))
     loss_list = list([0]*len(cycle_times))
+    total_list = list([0]*len(cycle_times))
 
     # Get all loss entries
     for test_scenario in test_data:
         current_cycle_time = test_scenario[0]['connection']['cycle_time']
-        current_loss_ratio = (test_scenario[1]['report']['losses'] / test_scenario[1]['report']['total']) * 100
 
         for idx, cycle_time in enumerate(cycle_times):
             if cycle_time == current_cycle_time:
-                loss_list[idx] = current_loss_ratio
+                loss_list[idx] += test_scenario[1]['report']['losses']
+                total_list[idx] += test_scenario[1]['report']['total']
+                break
+
+    ratio_list = [(loss / total)*100 for loss, total in zip(loss_list, total_list)]
 
     # Create a bar chart for each datagram size
     bar_width = 0.2
     index = np.arange(len(cycle_times))
 
     _, ax = plt.subplots(figsize=(12, 5))
-    bars = ax.bar(index, loss_list, bar_width, color=colors['datagramsize'].get(datagramsize, 'red'), edgecolor='black', label=f"{datagramsize} Byte", alpha=0.7)
+    bars = ax.bar(index, ratio_list, bar_width, color=colors['datagramsize'].get(datagramsize, 'red'), edgecolor='black', label=f"{datagramsize} Byte", alpha=0.7)
 
     for entry in bars:
         yval = entry.get_height()
@@ -65,7 +69,7 @@ def __plot_datagramsize_diagr1(test_data: list, datagramsize: int, output_path: 
     ax.set_ylabel('Packet Loss Ratio')
     ax.set_xticks(index, [f"{(cycle_time / 1000):.1f} \u03bcs" for cycle_time in cycle_times])
 
-    max_value = max(loss_list)
+    max_value = max(ratio_list)
     plt.ylim(0, math.ceil(max_value / 0.78))
 
     def percent_formatter(x, _):

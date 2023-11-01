@@ -181,9 +181,11 @@ def __get_losses_location(scenario_client_results: dict, scenario_server_results
         if tx_dropped_server > 0:
             result += 'Server (NIC)  '
 
-        udp_rec_err_server = scenario_server_results['netstat_statistic']['udp_rec_err']
-        if udp_rec_err_server > 0:
-            result += 'Server (UDP) [CAUSED BY STRESS?]  '
+        # Check if netstat statistics is available
+        if 'netstat_statistic' in scenario_client_results:
+            udp_rec_err_server = scenario_server_results['netstat_statistic']['udp_rec_err']
+            if udp_rec_err_server > 0:
+                result += 'Server (UDP) [CAUSED BY STRESS?]  '
 
         if (tx_dropped_client == 0) and (tx_dropped_server == 0):
             result += 'Route (Switch)'
