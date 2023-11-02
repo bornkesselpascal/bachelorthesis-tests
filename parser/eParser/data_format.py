@@ -21,6 +21,10 @@ def format_query(query: list, duartion: float, losses: int, total: int) -> list:
     #   - This means that the messages may not arrive in the correct order (the query message is very small).
     #   - This function fixes the data by looking for negative differences.
 
+    # Check if the query is empty
+    if query == []:
+        return query
+
     new_query = query.copy()
     new_query.append({'losses': losses, 'total': total, 'timestamp': duartion, 'difference': (losses - new_query[-1]['losses'])})
     if  not any(report['difference'] < 0 for report in new_query):

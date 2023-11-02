@@ -54,7 +54,7 @@ def write_query_table(test_data: list, campaign_folder: str, processes: list=Non
         os.makedirs(scenario_path)
 
     for test_scenario in test_data:
-        if test_scenario[3] is not None:
+        if (test_scenario[3] is not None) and (test_scenario[3] != []):
             scenario_subpath = os.path.join(scenario_path, f"{test_scenario[0]['metadata']['t_uid']}")
 
             if concurrent_execution():
