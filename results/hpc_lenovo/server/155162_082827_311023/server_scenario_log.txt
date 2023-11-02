@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/newcard_server_062813_311023/155162_082827_311023/test_description.xml
+
+[TS] REPORT TIMESTAMP: Mon Oct 30 11:01:32 2023
+
+[RE] PATH            : /testsuite/newcard_server_062813_311023/155162_082827_311023/test_results.xml
+
