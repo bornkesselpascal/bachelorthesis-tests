@@ -1,7 +1,0 @@
-TEST CLIENT LOG
-TEST T_UID: 123
-0
-332793
-Client connecting to 10.30.0.2, UDP port 5001
-Sending 8972 byte datagrams, IPG target: 6.68 us (kalman adjust)
-UDP buffer size:  208 KByte (default)
