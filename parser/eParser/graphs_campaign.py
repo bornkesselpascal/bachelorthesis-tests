@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator, FuncFormatter
-from constants import generate_latex, generate_png, colors
+from constants import diagrams
 
 
 #                                  _                                     _
@@ -76,7 +76,7 @@ def __plot_campaign_diagr1(test_data: list, output_path: str) -> None:
 
     _, ax = plt.subplots(figsize=(12, 5))
     for idx, (size, values) in enumerate(sorted_losses_per_size.items()):
-        ax.bar(index + bar_width * idx, values, bar_width, color=colors['datagramsize'].get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7)
+        ax.bar(index + bar_width * idx, values, bar_width, color=diagrams['colors']['datagramsize'].get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7)
 
     # Add axis labels and titles
     ax.set_title('Test Cases by Packet Loss Ratio and Datagram Size (across all Cycle Times)')
@@ -92,12 +92,13 @@ def __plot_campaign_diagr1(test_data: list, output_path: str) -> None:
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
 
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
 
@@ -147,7 +148,7 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
     bars = list()
     _, ax = plt.subplots(figsize=(12, 5))
     for idx, (size, values) in enumerate(sorted_ratio_per_size.items()):
-        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors['datagramsize'].get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7))
+        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=diagrams['colors']['datagramsize'].get(size, 'red'), edgecolor='black', label=f"{size} Byte", alpha=0.7))
 
     for record in bars:
         for entry in record:
@@ -171,12 +172,13 @@ def __plot_campaign_diagr2(test_data: list, output_path: str) -> None:
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
-
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    
     plt.close()
 
 
@@ -230,7 +232,7 @@ def __plot_campaign_diagr3(test_data: list, output_path: str) -> None:
     bars = list()
     _, ax = plt.subplots(figsize=(12, 5))
     for idx, (location, values) in enumerate(sorted_ratio_per_location.items()):
-        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=colors['location'].get(location, 'red'), edgecolor='black', label=location, alpha=0.7))
+        bars.append(ax.bar(index + bar_width * idx, values, bar_width, color=diagrams['colors']['location'].get(location, 'red'), edgecolor='black', label=location, alpha=0.7))
 
     for record in bars:
         for entry in record:
@@ -254,10 +256,11 @@ def __plot_campaign_diagr3(test_data: list, output_path: str) -> None:
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
 
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()

@@ -7,7 +7,7 @@ import openpyxl
 from openpyxl.worksheet.table import TableStyleInfo
 from openpyxl.styles import Alignment, Font
 from data_format import format_query
-from constants import concurrent_execution, generate_excel, font_name, monspace_font_name
+from constants import tables, concurrent_execution
 
 
 def write_test_table(test_data: list, campaign_name: str, campaign_folder: str, processes: list=None) -> None:
@@ -217,7 +217,7 @@ def __write_query_table(test_scenario: dict, output_path: str) -> None:
 
 
 def __save_as_excel(csv_path: str, output_path: str, overview_file = False) -> None:
-    if generate_excel:
+    if tables['excel']['generate']:
         filename = os.path.join(output_path, f"{os.path.splitext(os.path.basename(csv_path))[0]}.xlsx")
 
         # Load the CSV data into a DataFrame
@@ -248,7 +248,7 @@ def __save_as_excel(csv_path: str, output_path: str, overview_file = False) -> N
 
             for row in worksheet[table_range]:
                 for cell in row:
-                    cell.font = Font(name=font_name)
+                    cell.font = Font(name=tables['excel']['font_name'])
 
             for cell in worksheet["1:1"]:
                 cell.alignment = Alignment(horizontal='left')
@@ -257,18 +257,18 @@ def __save_as_excel(csv_path: str, output_path: str, overview_file = False) -> N
             # Change table formatting for campaign overview
             if overview_file:
                 # Change the number format and font style
-                __set_column_style('A', worksheet, monspace_font_name, number_format='0.0')                 # Duration
-                __set_column_style('C', worksheet, monspace_font_name, bold=True)                           # Test-ID
-                __set_column_style('G', worksheet, monspace_font_name)                                      # Cycle Time
-                __set_column_style('H', worksheet, monspace_font_name)                                      # Datagram Size
-                __set_column_style('N', worksheet, monspace_font_name)                                      # Losses [total]
-                __set_column_style('O', worksheet, monspace_font_name, bold=True, number_format='0.000%')   # Losses [ratio]
-                __set_column_style('Q', worksheet, monspace_font_name)                                      # Packets [total]
-                __set_column_style('R', worksheet, monspace_font_name)                                      # PPS [udp]
-                __set_column_style('S', worksheet, monspace_font_name)                                      # PPS [ip]
-                __set_column_style('T', worksheet, monspace_font_name, number_format='0.0')                 # Bandwidth [net]
-                __set_column_style('U', worksheet, monspace_font_name, number_format='0.0')                 # Bandwidth [gross]
-                __set_column_style('V', worksheet, monspace_font_name)                                      # Timer Misses
+                __set_column_style('A', worksheet, tables['excel']['monospace_font_name'], number_format='0.0')                 # Duration
+                __set_column_style('C', worksheet, tables['excel']['monospace_font_name'], bold=True)                           # Test-ID
+                __set_column_style('G', worksheet, tables['excel']['monospace_font_name'])                                      # Cycle Time
+                __set_column_style('H', worksheet, tables['excel']['monospace_font_name'])                                      # Datagram Size
+                __set_column_style('N', worksheet, tables['excel']['monospace_font_name'])                                      # Losses [total]
+                __set_column_style('O', worksheet, tables['excel']['monospace_font_name'], bold=True, number_format='0.000%')   # Losses [ratio]
+                __set_column_style('Q', worksheet, tables['excel']['monospace_font_name'])                                      # Packets [total]
+                __set_column_style('R', worksheet, tables['excel']['monospace_font_name'])                                      # PPS [udp]
+                __set_column_style('S', worksheet, tables['excel']['monospace_font_name'])                                      # PPS [ip]
+                __set_column_style('T', worksheet, tables['excel']['monospace_font_name'], number_format='0.0')                 # Bandwidth [net]
+                __set_column_style('U', worksheet, tables['excel']['monospace_font_name'], number_format='0.0')                 # Bandwidth [gross]
+                __set_column_style('V', worksheet, tables['excel']['monospace_font_name'])                                      # Timer Misses
 
                 # Resize the columns
                 __set_automatic_column_lenght('C', worksheet)               # Test-ID

@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator, FuncFormatter
-from constants import generate_latex, generate_png, colors
+from constants import diagrams
 
 
 #      _       _                                      _                                 _
@@ -57,7 +57,7 @@ def __plot_datagramsize_diagr1(test_data: list, datagramsize: int, output_path: 
     index = np.arange(len(cycle_times))
 
     _, ax = plt.subplots(figsize=(12, 5))
-    bars = ax.bar(index, ratio_list, bar_width, color=colors['datagramsize'].get(datagramsize, 'red'), edgecolor='black', label=f"{datagramsize} Byte", alpha=0.7)
+    bars = ax.bar(index, ratio_list, bar_width, color=diagrams['colors']['datagramsize'].get(datagramsize, 'red'), edgecolor='black', label=f"{datagramsize} Byte", alpha=0.7)
 
     for entry in bars:
         yval = entry.get_height()
@@ -79,10 +79,11 @@ def __plot_datagramsize_diagr1(test_data: list, datagramsize: int, output_path: 
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
 
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()

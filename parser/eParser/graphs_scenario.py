@@ -3,7 +3,7 @@ import math
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
-from constants import generate_latex, generate_png, generate_histogram, colors
+from constants import diagrams
 from data_format import format_query
 
 
@@ -28,7 +28,7 @@ def _prepare_and_create_scenario_graphs(test_scenario: tuple, output_path: str) 
 
 
 def __plot_scenario_diagr1(test_scenario: tuple, output_path: str) -> None:
-    if not generate_histogram:
+    if not diagrams['histogram']:
         # If no histogram should be generated, we stop here.
         return
     if  test_scenario[1]['report']['losses'] == 0:
@@ -52,7 +52,7 @@ def __plot_scenario_diagr1(test_scenario: tuple, output_path: str) -> None:
     # Create the histogram
     # Creating the histogram
     _, ax = plt.subplots(figsize=(12, 5))
-    ax.hist(differences_list, bins=range(0, max(differences_list) + 2), align='left', color=colors['datagramsize'].get(test_scenario[0]['connection']['datagram_size'], 'red'), edgecolor='black', alpha=0.7)
+    ax.hist(differences_list, bins=range(0, max(differences_list) + 2), align='left', color=diagrams['colors']['datagramsize'].get(test_scenario[0]['connection']['datagram_size'], 'red'), edgecolor='black', alpha=0.7)
 
     # Labels, title, and other configurations
     ax.set_xlabel('Packet Losses per 100000 Packets (Number of Packets)')
@@ -62,12 +62,13 @@ def __plot_scenario_diagr1(test_scenario: tuple, output_path: str) -> None:
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
 
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
 
@@ -91,8 +92,8 @@ def __plot_scenario_diagr2(test_scenario: tuple, output_path: str) -> None:
 
     # Create the diagram
     _, ax = plt.subplots(figsize=(12, 5))
-    ax.fill_between(timestamps, totals, color=colors['paket_type']['sent'], label='Sent Packets', edgecolor='black', alpha=0.6)
-    ax.fill_between(timestamps, received, color=colors['paket_type']['received'], label='Received Packets', edgecolor='black', alpha=0.7)
+    ax.fill_between(timestamps, totals, color=diagrams['colors']['paket_type']['sent'], label='Sent Packets', edgecolor='black', alpha=0.6)
+    ax.fill_between(timestamps, received, color=diagrams['colors']['paket_type']['received'], label='Received Packets', edgecolor='black', alpha=0.7)
     ax.set_xlabel('Time')
     ax.set_ylabel('Packets')
     ax.set_title('Temporal Distribution of Sent and Received UDP Packets')
@@ -108,12 +109,13 @@ def __plot_scenario_diagr2(test_scenario: tuple, output_path: str) -> None:
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
 
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
 
@@ -152,12 +154,13 @@ def __plot_scenario_diagr3(test_scenario: tuple, output_path: str) -> None:
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
 
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()
 
 
@@ -196,8 +199,8 @@ def __plot_scenario_diagr4(test_scenario: tuple, output_path: str) -> None:
     # Create the diagram
     _, ax = plt.subplots(figsize=(12, 5))
 
-    ax.fill_between(timestamps, package_per_second['sent'], color=colors['paket_type']['sent'], label='Sent Packets', edgecolor='black', alpha=0.6)
-    ax.fill_between(timestamps, package_per_second['received'], color=colors['paket_type']['received'], label='Received Packets', edgecolor='black', alpha=0.7)
+    ax.fill_between(timestamps, package_per_second['sent'], color=diagrams['colors']['paket_type']['sent'], label='Sent Packets', edgecolor='black', alpha=0.6)
+    ax.fill_between(timestamps, package_per_second['received'], color=diagrams['colors']['paket_type']['received'], label='Received Packets', edgecolor='black', alpha=0.7)
 
     if draw_packages_per_second:
         ax.set_title('Overview of Sent and Received UDP Packets per Second')
@@ -219,10 +222,11 @@ def __plot_scenario_diagr4(test_scenario: tuple, output_path: str) -> None:
     plt.tight_layout()
 
     # Save the diagram
-    if generate_latex:
+    if diagrams['output']['pdf']:
+        plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
+    if diagrams['output']['latex']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.pgf'))
-    if generate_png:
+    if diagrams['output']['png']:
         plt.savefig(os.path.join(output_path, f'{diagram_name}.png'), dpi=300)
 
-    plt.savefig(os.path.join(output_path, f'{diagram_name}.pdf'))
     plt.close()

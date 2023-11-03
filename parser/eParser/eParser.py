@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from constants import output_folder, results_folder, concurrent_execution
+from constants import tables, diagrams, output_folder, results_folder, concurrent_execution
 from parsing import parse_description_file, parse_result_file, parse_query_messages
 from file_management import validate_test_folder, check_server_data
 from tablemaker import write_test_table, write_query_table
@@ -89,16 +89,18 @@ def __parse_campaign(name: str) -> None:
     test_data.sort(key=lambda x: (x[0]['connection']['datagram_size'], x[0]['connection']['cycle_time']))
 
     # Write the test data to a csv file and create query overview if possible
-    write_test_table(test_data, name, campaign_folder, processes)
-    write_query_table(test_data, campaign_folder, processes)
+    if tables['generate']:
+        write_test_table(test_data, name, campaign_folder, processes)
+        write_query_table(test_data, campaign_folder, processes)
 
-    # Create graphs:
+    # Create diagrams:
     #   - campaign
     #   - scenario (only if query messages are available)
     #   - datagram size
-    create_campaign_graphs(test_data, campaign_folder, processes)
-    create_scenario_graphs(test_data, campaign_folder, processes)
-    create_datagramsize_graphs(test_data, campaign_folder, processes)
+    if diagrams['generate']:
+        create_campaign_graphs(test_data, campaign_folder, processes)
+        create_scenario_graphs(test_data, campaign_folder, processes)
+        create_datagramsize_graphs(test_data, campaign_folder, processes)
 
 
     # End the execution of eParser
