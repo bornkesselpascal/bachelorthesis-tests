@@ -35,8 +35,19 @@ diagrams = {
 }
 
 # EXECUTION OPTIONS
+def os_name():
+    if os.name == 'nt':
+        return 'Windows'
+    elif os.name == 'posix':
+        if os.uname().sysname == 'Darwin':
+            return 'macOS'
+        else:
+            return 'Linux'
+        
+    return 'unknown'
+
 def concurrent_execution():
-    if os.name == 'nt' or (os.name == 'posix' and os.uname().sysname == 'Darwin'):
-        return False    # Windows or macOS
+    if os_name() == 'Linux':
+        return True
     else:
-        return True     # Linux
+        return False

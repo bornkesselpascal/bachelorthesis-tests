@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from constants import tables, diagrams, output_folder, results_folder, concurrent_execution
+from constants import tables, diagrams, output_folder, results_folder, os_name, concurrent_execution
 from parsing import parse_description_file, parse_result_file, parse_query_messages
 from file_management import validate_test_folder, check_server_data
 from tablemaker import write_test_table, write_query_table
@@ -12,7 +12,8 @@ parent_folder = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 # Output folder for the current execution
 commit_hash   = os.popen('git rev-parse HEAD').read().strip()[:7]
 timestamp     = datetime.now().strftime('%y%m%d_%H%M%S')
-output_folder = os.path.join(parent_folder, output_folder, f'{timestamp}_{commit_hash}')
+operating_sys = os_name()
+output_folder = os.path.join(parent_folder, output_folder, f'{timestamp}_{commit_hash}_{operating_sys}')
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
