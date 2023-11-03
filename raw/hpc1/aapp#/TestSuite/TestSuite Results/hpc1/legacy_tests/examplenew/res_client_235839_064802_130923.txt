@@ -1,0 +1,35 @@
+[TD] METADATA METHOD        : 0
+[TD] METADATA T_UID         : 235839_064802_130923
+[TD] METADATA PATH          : /testsuite/examplenew
+[TD] DURATION               : 20
+[TD] CONNECTION IP          : 10.30.0.2
+[TD] CONNECTION BANDWIDTH   : 10G
+[TD] CONNECTION DATAGRAMSIZE: 8972
+[TD] STRESS TYPE            : 0
+[TD] STRESS NUM             : 8
+
+[TS] REPORT TIMESTAMP       : Wed Sep 13 06:48:26 2023
+
+[RE] STATUS     : FAIL
+[RE] STARTUP    : 
+Client connecting to 10.30.0.2, UDP port 5001
+Sending 8972 byte datagrams, IPG target: 6.68 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+[RE] INTERVAL   : 
+[RE] TANSFER    : 
+[RE] BANDWIDTH  : 
+[RE] JITTER     : 
+[RE] DTGR_LOSS  : 0
+[RE] DTGR_TOTAL : 0
+
+[RE] COMPLETE OUTPUT FOR ERROR CHECKING: 
+------------------------------------------------------------
+Client connecting to 10.30.0.2, UDP port 5001
+Sending 8972 byte datagrams, IPG target: 6.68 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  1] local 10.30.0.1 port 37674 connected with 10.30.0.2 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  1] 0.0000-20.0001 sec  5.56 GBytes  2.39 Gbits/sec
+[  1] Sent 665315 datagrams
+

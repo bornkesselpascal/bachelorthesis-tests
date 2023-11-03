@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>271121_041644_170923</t_uid>
+		<path>/testsuite/custom_test_eno1</path>
+	</metadata>
+	<duration>40</duration>
+	<connection>
+		<custom>
+			<client_ip>10.30.0.1</client_ip>
+			<server_ip>10.30.0.2</server_ip>
+			<port>8100</port>
+			<gap>100000</gap>
+			<datagram>
+				<size>0</size>
+				<random>false</random>
+			</datagram>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp1s0f0</client>
+		<server>enp1s0f0</server>
+	</interface>
+	<stress>
+		<type>CPU_USR</type>
+		<num>16</num>
+		<location>LOC_BOTH</location>
+	</stress>
+</test_description>

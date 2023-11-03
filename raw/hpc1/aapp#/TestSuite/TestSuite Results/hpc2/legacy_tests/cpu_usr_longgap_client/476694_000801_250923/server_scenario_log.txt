@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/cpu_usr_longgap_client/476694_000801_250923/test_description.xml
+
+[TS] REPORT TIMESTAMP: Mon Sep 25 06:44:41 2023
+
+[RE] PATH            : /testsuite/cpu_usr_longgap_client/476694_000801_250923/test_results.xml
+

@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/interest_test_client_network_10/304454_111812_280923/test_description.xml
+
+[TS] REPORT TIMESTAMP: Thu Sep 28 11:52:12 2023
+
+[RE] PATH            : /testsuite/interest_test_client_network_10/304454_111812_280923/test_results.xml
+

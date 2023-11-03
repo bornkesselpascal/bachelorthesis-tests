@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<network_stress_description>
+	<connection>
+		<companion_ip>10.0.0.2</companion_ip>
+		<datagram>
+			<size>8950</size>
+		</datagram>
+	</connection>
+	<is_server>false</is_server>
+</network_stress_description>

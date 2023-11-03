@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<client_log>
+	<startup>Fri Sep 22 12:11:38 2023
+</startup>
+	<scenario>
+		<t_uid>658857_121138_220923</t_uid>
+		<log_time>Fri Sep 22 12:45:12 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>2000</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>19963620</num_total>
+			<num_misses>35061</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>503402_124512_220923</t_uid>
+		<log_time>Fri Sep 22 20:45:25 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>28800</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>287970551</num_total>
+			<num_misses>19742</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>526552_204525_220923</t_uid>
+		<log_time>Fri Sep 22 21:18:58 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>2000</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>19990167</num_total>
+			<num_misses>214</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>469750_211858_220923</t_uid>
+		<log_time>Sat Sep 23 05:19:11 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>28800</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>287963017</num_total>
+			<num_misses>27406</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>230598_051911_230923</t_uid>
+		<log_time>Sat Sep 23 05:52:44 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>2000</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>19988762</num_total>
+			<num_misses>1833</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>441281_055244_230923</t_uid>
+		<log_time>Sat Sep 23 13:52:57 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>28800</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>287967979</num_total>
+			<num_misses>22553</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>534785_135257_230923</t_uid>
+		<log_time>Sat Sep 23 14:26:30 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>2000</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>19989246</num_total>
+			<num_misses>1317</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>480825_142630_230923</t_uid>
+		<log_time>Sat Sep 23 22:26:43 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>28800</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>32</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>287969056</num_total>
+			<num_misses>21215</num_misses>
+		</results>
+	</scenario>
+</client_log>

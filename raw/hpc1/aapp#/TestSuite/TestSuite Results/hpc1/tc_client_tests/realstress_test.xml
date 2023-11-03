@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<client_description>
+	<method>CUSTOM</method>
+	<path>/testsuite/io_client_lt</path>
+	<duration>
+		<short_duration>7200</short_duration>
+		<long_duration>0</long_duration>
+	</duration>
+	<target_connection>
+		<client_ip>10.0.0.1</client_ip>
+		<server_ip>10.0.0.2</server_ip>
+		<bandwidth_limit></bandwidth_limit>
+		<port>8100</port>
+		<gap>2500</gap>
+		<datagram>
+			<sizes>
+				<value>80</value>
+				<value>8900</value>
+				<value>65000</value>
+			</sizes>
+			<random>false</random>
+		</datagram>
+	</target_connection>
+	<interface>
+		<client>enp1s0f0</client>
+		<server>enp1s0f0</server>
+	</interface>
+	<service_connection>
+		<server_ip>10.30.0.2</server_ip>
+		<port>8080</port>
+	</service_connection>
+	<client_only>false</client_only>
+	<stress>
+		<type>NONE</type>
+		<location>LOC_BOTH</location>
+	</stress>
+</client_description>

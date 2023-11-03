@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<client_log>
+	<startup>Mon Oct  9 09:10:33 2023
+</startup>
+	<scenario>
+		<t_uid>283618_091033_091023</t_uid>
+		<log_time>Mon Oct  9 09:12:24 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>0</num>
+			<location>LOC_CLIENT</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>9960784</num_total>
+			<num_misses>16109</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>142446_091224_091023</t_uid>
+		<log_time>Mon Oct  9 09:14:16 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>0</num>
+			<location>LOC_CLIENT</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>12913892</num_total>
+			<num_misses>415644</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>606170_091416_091023</t_uid>
+		<log_time>Mon Oct  9 09:16:08 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>0</num>
+			<location>LOC_CLIENT</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>13182937</num_total>
+			<num_misses>6811375</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>181014_091608_091023</t_uid>
+		<log_time>Mon Oct  9 09:18:00 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>0</num>
+			<location>LOC_CLIENT</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>13184295</num_total>
+			<num_misses>26804138</num_misses>
+		</results>
+	</scenario>
+</client_log>

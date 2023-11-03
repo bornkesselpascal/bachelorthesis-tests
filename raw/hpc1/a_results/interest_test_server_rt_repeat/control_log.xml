@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<client_log>
+	<startup>Fri Sep 29 02:47:10 2023
+</startup>
+	<scenario>
+		<t_uid>120416_024710_290923</t_uid>
+		<log_time>Fri Sep 29 02:49:00 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>80</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>9955491</num_total>
+			<num_misses>108</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>225073_024905_290923</t_uid>
+		<log_time>Fri Sep 29 02:50:55 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>80</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>13126694</num_total>
+			<num_misses>190556</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>147185_025100_290923</t_uid>
+		<log_time>Fri Sep 29 02:52:50 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>80</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>14647116</num_total>
+			<num_misses>5328783</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>725211_025255_290923</t_uid>
+		<log_time>Fri Sep 29 02:54:45 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>80</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>15827472</num_total>
+			<num_misses>24124314</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>652388_025450_290923</t_uid>
+		<log_time>Fri Sep 29 02:56:40 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>80</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>15877481</num_total>
+			<num_misses>1079336742</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>887508_025645_290923</t_uid>
+		<log_time>Fri Sep 29 02:58:35 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>9737519</num_total>
+			<num_misses>250419</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>177285_025840_290923</t_uid>
+		<log_time>Fri Sep 29 03:00:30 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>10268370</num_total>
+			<num_misses>3048900</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>327293_030035_290923</t_uid>
+		<log_time>Fri Sep 29 03:02:25 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>10271859</num_total>
+			<num_misses>9704029</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>529551_030230_290923</t_uid>
+		<log_time>Fri Sep 29 03:04:20 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>10256637</num_total>
+			<num_misses>29695162</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>926205_030425_290923</t_uid>
+		<log_time>Fri Sep 29 03:06:15 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>8900</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>10260336</num_total>
+			<num_misses>1084921797</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>970778_030620_290923</t_uid>
+		<log_time>Fri Sep 29 03:08:10 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>1578548</num_total>
+			<num_misses>8409401</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>547941_030815_290923</t_uid>
+		<log_time>Fri Sep 29 03:10:05 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>1580515</num_total>
+			<num_misses>11736753</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>936563_031010_290923</t_uid>
+		<log_time>Fri Sep 29 03:12:00 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>1580418</num_total>
+			<num_misses>18395491</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>278259_031205_290923</t_uid>
+		<log_time>Fri Sep 29 03:13:55 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>1580325</num_total>
+			<num_misses>38371448</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>493918_031400_290923</t_uid>
+		<log_time>Fri Sep 29 03:15:50 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>100</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>CPU_REALTIME</type>
+			<num>15</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>1580413</num_total>
+			<num_misses>1093687322</num_misses>
+		</results>
+	</scenario>
+</client_log>

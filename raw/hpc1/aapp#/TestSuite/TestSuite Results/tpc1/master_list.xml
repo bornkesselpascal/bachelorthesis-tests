@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description_files>
+	<client_description>
+                <path>/testsuite/tc_client_tests/cpu_client.xml</path>
+                <execute>true</execute>
+        </client_description>
+        <client_description>
+		<path>/testsuite/tc_client_tests/cpu_server.xml</path>
+		<execute>false</execute>
+	</client_description>
+</description_files>

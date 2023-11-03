@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/mem_server_bandwidthtest_2D_iPerf/321410_023734_041023/test_description.xml
+
+[TS] REPORT TIMESTAMP: Wed Oct  4 01:31:55 2023
+
+[RE] PATH            : /testsuite/mem_server_bandwidthtest_2D_iPerf/321410_023734_041023/test_results.xml
+

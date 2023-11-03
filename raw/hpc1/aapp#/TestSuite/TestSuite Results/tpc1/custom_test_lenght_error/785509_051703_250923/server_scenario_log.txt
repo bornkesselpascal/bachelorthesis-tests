@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/custom_test_lenght_error/785509_051703_250923/test_description.xml
+
+[TS] REPORT TIMESTAMP: Mon Sep 25 05:17:38 2023
+
+[RE] PATH            : /testsuite/custom_test_lenght_error/785509_051703_250923/test_results.xml
+

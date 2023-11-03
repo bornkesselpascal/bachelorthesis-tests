@@ -1,0 +1,45 @@
+[RE] IPERF COMPLETE_OUTPUT  : 
+------------------------------------------------------------
+Client connecting to 10.0.0.2, UDP port 5001
+Sending 8900 byte datagrams, IPG target: 0.00 us (kalman adjust)
+UDP buffer size: -1.00 Byte (default)
+------------------------------------------------------------
+[  1] local 0.0.0.0 port 0 connected with 10.0.0.2 port 5001
+
+
+[RE] IPERF COMPLETE_OUTPUT  : 
+------------------------------------------------------------
+Client connecting to 10.0.0.2, UDP port 5001
+Sending 0 byte datagrams, IPG target: 0.00 us (kalman adjust)
+UDP buffer size: -1.00 Byte (default)
+------------------------------------------------------------
+[  1] local 0.0.0.0 port 0 connected with 10.0.0.2 port 5001
+
+
+[RE] IPERF COMPLETE_OUTPUT  : 
+------------------------------------------------------------
+Client connecting to 10.30.0.2, UDP port 5001
+Sending 0 byte datagrams, IPG target: 0.00 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  1] local 10.30.0.1 port 47662 connected with 10.30.0.2 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  1] 0.0000-10.0001 sec  76.0 Bytes  60.8 bits/sec
+[  1] Sent 1113527 datagrams
+[  1] Server Report:
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  1] 0.0000-0.0004 sec  76.0 Bytes  1.57 Mbits/sec   0.000 ms 0/1 (0%)
+[  1] 0.0000-0.0004 sec  1 datagrams received out-of-order
+
+[RE] IPERF COMPLETE_OUTPUT  : 
+------------------------------------------------------------
+Client connecting to 10.30.0.2, UDP port 5001
+Sending 1 byte datagrams, IPG target: 0.00 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  1] local 10.30.0.1 port 45522 connected with 10.30.0.2 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  1] 0.0000-10.0001 sec  1.20 MBytes  1.01 Mbits/sec
+[  1] Sent 1257021 datagrams
+
+

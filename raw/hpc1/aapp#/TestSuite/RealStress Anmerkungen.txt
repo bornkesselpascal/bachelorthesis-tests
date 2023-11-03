@@ -1,0 +1,35 @@
+Tests 80
+
+* - T_UID       : 441618_150322_101023
+* - GAP         : 2500
+* - DATAGR-SIZE : 80
+[ERROR] Loss limit reached. Aborting test scenario.72
+Packages send    : 11000001
+Packages received: 10999929
+
+* - T_UID       : 747278_150453_101023
+* - GAP         : 10000
+* - DATAGR-SIZE : 80
+Packages send    : 719983298
+Packages received: 719983283
+
+* - T_UID       : 399172_170506_101023
+* - GAP         : 20000
+* - DATAGR-SIZE : 80
+Packages send    : 359952604
+Packages received: 359952563
+
+* - T_UID       : 687030_190518_101023
+* - GAP         : 30000
+* - DATAGR-SIZE : 80
+[ERROR] Loss limit reached. Aborting test scenario.94450
+Packages send    : 109000001
+Packages received: 108905551
+
+* - T_UID       : 766076_200001_101023
+* - GAP         : 40000
+* - DATAGR-SIZE : 80
+Packages send    : 179978416
+Packages received: 179978416
+Timer misses     : 251
+Erster ohne Loss. Danach keine Verluste.

@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/interest_tpc_server/interest_tests/700822_145906_061023/test_description.xml
+
+[TS] REPORT TIMESTAMP: Fri Oct  6 15:00:59 2023
+
+[RE] PATH            : /testsuite/interest_tpc_server/interest_tests/700822_145906_061023/test_results.xml
+

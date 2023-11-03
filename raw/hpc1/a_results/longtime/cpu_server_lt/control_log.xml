@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<client_log>
+	<startup>Wed Oct  4 14:18:02 2023
+</startup>
+	<scenario>
+		<t_uid>360898_141802_041023</t_uid>
+		<log_time>Wed Oct  4 15:18:13 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>3600</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>16</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>122</num_loss>
+			<num_total>581797279</num_total>
+			<num_misses>858191856</num_misses>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>616000_151813_041023</t_uid>
+		<log_time>Wed Oct  4 16:18:25 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>3600</duration>
+		<stress>
+			<type>CPU_USR</type>
+			<num>16</num>
+			<location>LOC_SERVER</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>0</num_loss>
+			<num_total>56835426</num_total>
+			<num_misses>1383160854</num_misses>
+		</results>
+	</scenario>
+</client_log>

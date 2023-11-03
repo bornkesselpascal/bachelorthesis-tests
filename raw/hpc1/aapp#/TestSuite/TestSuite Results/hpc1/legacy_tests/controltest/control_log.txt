@@ -1,0 +1,9 @@
+[TC] SCENARIO T_UID         : 478862_230845_140923
+[TC] END TIME               : Thu Sep 14 23:09:47 2023
+[TD] STRESS (TYPE/NUM)      : 0/0
+[TD] DURATION               : 60
+[RE] STATUS                 : 1
+[RE] RESULT (LOSS/TOTAL)    : 0/955288
+
+
+

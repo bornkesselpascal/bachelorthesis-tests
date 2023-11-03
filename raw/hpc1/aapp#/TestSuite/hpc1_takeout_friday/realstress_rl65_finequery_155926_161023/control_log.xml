@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<client_log>
+	<startup>Mon Oct 16 15:59:26 2023
+</startup>
+	<scenario>
+		<t_uid>662616_155926_161023</t_uid>
+		<log_time>Mon Oct 16 15:59:38 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>5051</num_loss>
+			<num_total>10001</num_total>
+			<num_misses>240361</num_misses>
+			<elapsed_time>0.626301</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>738064_155939_161023</t_uid>
+		<log_time>Mon Oct 16 15:59:52 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>10000</num_loss>
+			<num_total>10001</num_total>
+			<num_misses>285</num_misses>
+			<elapsed_time>0.617314</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>204512_155953_161023</t_uid>
+		<log_time>Mon Oct 16 16:00:06 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>3348</num_loss>
+			<num_total>10001</num_total>
+			<num_misses>15</num_misses>
+			<elapsed_time>0.701199</elapsed_time>
+		</results>
+	</scenario>
+	<scenario>
+		<t_uid>848760_160007_161023</t_uid>
+		<log_time>Mon Oct 16 16:00:19 2023
+</log_time>
+		<method>CUSTOM</method>
+		<duration>7200</duration>
+		<datagram_size>65000</datagram_size>
+		<stress>
+			<type>NONE</type>
+			<num>0</num>
+			<location>LOC_BOTH</location>
+		</stress>
+		<results>
+			<status>STATUS_SUCCESS</status>
+			<num_loss>9952</num_loss>
+			<num_total>10001</num_total>
+			<num_misses>13</num_misses>
+			<elapsed_time>0.801245</elapsed_time>
+		</results>
+	</scenario>
+</client_log>

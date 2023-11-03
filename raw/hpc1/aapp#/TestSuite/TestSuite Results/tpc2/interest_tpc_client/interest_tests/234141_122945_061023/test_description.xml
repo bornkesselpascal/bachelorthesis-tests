@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>234141_122945_061023</t_uid>
+		<path>/testsuite/interest_tpc_client/interest_tests</path>
+	</metadata>
+	<duration>100</duration>
+	<connection>
+		<custom>
+			<client_ip>10.0.0.101</client_ip>
+			<server_ip>10.0.0.102</server_ip>
+			<port>8100</port>
+			<gap>7500</gap>
+			<datagram>
+				<size>80</size>
+				<random>false</random>
+			</datagram>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp2s0f1</client>
+		<server>enp1s0f1</server>
+	</interface>
+	<stress>
+		<type>CPU_KERNEL</type>
+		<num>8</num>
+		<location>LOC_CLIENT</location>
+	</stress>
+</test_description>
