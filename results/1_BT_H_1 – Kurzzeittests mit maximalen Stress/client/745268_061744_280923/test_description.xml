@@ -23,8 +23,8 @@
 		<server>enp1s0f0</server>
 	</interface>
 	<stress>
-		<type>CPU_USR</type>
-		<num>0</num>
+		<type>NETWORK_DIRECT</type>
+		<num>10</num>
 		<location>LOC_CLIENT</location>
 	</stress>
 </test_description>
