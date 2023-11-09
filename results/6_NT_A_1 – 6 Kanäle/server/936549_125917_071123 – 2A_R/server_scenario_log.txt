@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/client_2A_R/first_test_105851_071123/936549_125917_071123/test_description.xml
+
+[TS] REPORT TIMESTAMP: Mon Nov  6 13:35:10 2023
+
+[RE] PATH            : /testsuite/client_2A_R/first_test_105851_071123/936549_125917_071123/test_results.xml
+
