@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/interest_no_load/315009_063532_041023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Wed Oct  4 05:25:22 2023
-
-[RE] PATH            : /testsuite/interest_no_load/315009_063532_041023/test_results.xml
-

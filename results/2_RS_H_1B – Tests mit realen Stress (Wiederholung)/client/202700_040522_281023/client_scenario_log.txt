@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/rs_classic_repeat_070513_271023/202700_040522_281023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Sat Oct 28 05:21:30 2023
-
-[RE] PATH            : /testsuite/rs_classic_repeat_070513_271023/202700_040522_281023/test_results.xml
-

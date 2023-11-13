@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/realstress_045109_111023/864216_045109_111023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Wed Oct 11 04:51:27 2023
-
-[RE] PATH            : /testsuite/realstress_045109_111023/864216_045109_111023/test_results.xml
-

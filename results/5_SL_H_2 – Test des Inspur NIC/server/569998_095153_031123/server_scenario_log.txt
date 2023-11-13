@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/newcard_inspur_server_075140_031123/569998_095153_031123/test_description.xml
-
-[TS] REPORT TIMESTAMP: Thu Nov  2 12:24:56 2023
-
-[RE] PATH            : /testsuite/newcard_inspur_server_075140_031123/569998_095153_031123/test_results.xml
-

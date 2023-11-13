@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/client_1A_R/first_test_100141_071123/685154_120207_071123/test_description.xml
-
-[TS] REPORT TIMESTAMP: Tue Nov  7 13:02:15 2023
-
-[RE] PATH            : /testsuite/client_1A_R/first_test_100141_071123/685154_120207_071123/test_results.xml
-
