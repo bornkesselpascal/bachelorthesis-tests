@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>649822_130550_131123</t_uid>
+		<path>/testsuite/client_4A_R/ihwk_IntrMod_130550_131123</path>
+	</metadata>
+	<duration>300</duration>
+	<connection>
+		<custom>
+			<client_ip>10.4.0.51</client_ip>
+			<server_ip>10.4.0.50</server_ip>
+			<port>8300</port>
+			<gap>2500</gap>
+			<datagram>
+				<size>80</size>
+				<random>false</random>
+			</datagram>
+			<qos>false</qos>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp1s0f0</client>
+		<server>enp175s0f0</server>
+	</interface>
+	<stress>
+		<type>NONE</type>
+		<num>0</num>
+		<location>LOC_BOTH</location>
+	</stress>
+</test_description>

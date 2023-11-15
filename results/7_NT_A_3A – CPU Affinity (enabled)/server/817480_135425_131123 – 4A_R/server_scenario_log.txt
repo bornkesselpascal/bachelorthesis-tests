@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/client_4A_R/ihwk_CpuAff_134959_131123/817480_135425_131123/test_description.xml
+
+[TS] REPORT TIMESTAMP: Tue Nov 14 14:21:53 2023
+
+[RE] PATH            : /testsuite/client_4A_R/ihwk_CpuAff_134959_131123/817480_135425_131123/test_results.xml
+

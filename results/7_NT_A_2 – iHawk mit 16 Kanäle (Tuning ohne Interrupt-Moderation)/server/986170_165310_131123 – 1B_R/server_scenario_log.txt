@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/client_1B_R/ihawk_2_3_125244_131123/986170_165310_131123/test_description.xml
+
+[TS] REPORT TIMESTAMP: Mon Nov 13 19:51:24 2023
+
+[RE] PATH            : /testsuite/client_1B_R/ihawk_2_3_125244_131123/986170_165310_131123/test_results.xml
+

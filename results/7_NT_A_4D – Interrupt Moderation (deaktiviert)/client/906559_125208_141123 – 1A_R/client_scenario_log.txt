@@ -1,0 +1,6 @@
+[TD] PATH            : /testsuite/client_1A_R/ihwk_IntrMod_125208_141123/906559_125208_141123/test_description.xml
+
+[TS] REPORT TIMESTAMP: Tue Nov 14 12:57:16 2023
+
+[RE] PATH            : /testsuite/client_1A_R/ihwk_IntrMod_125208_141123/906559_125208_141123/test_results.xml
+

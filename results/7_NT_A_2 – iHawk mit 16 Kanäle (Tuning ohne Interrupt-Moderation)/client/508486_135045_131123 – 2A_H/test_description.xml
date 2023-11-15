@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>508486_135045_131123</t_uid>
+		<path>/testsuite/client_2A_H/ihawk_2_3_135045_131123</path>
+	</metadata>
+	<duration>7200</duration>
+	<connection>
+		<custom>
+			<client_ip>10.2.0.50</client_ip>
+			<server_ip>10.2.0.51</server_ip>
+			<port>8200</port>
+			<gap>2500</gap>
+			<datagram>
+				<size>80</size>
+				<random>false</random>
+			</datagram>
+			<qos>false</qos>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp24s0f0</client>
+		<server>enp1s0f0</server>
+	</interface>
+	<stress>
+		<type>NONE</type>
+		<num>0</num>
+		<location>LOC_BOTH</location>
+	</stress>
+</test_description>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<test_description>
+	<metadata>
+		<method>CUSTOM</method>
+		<t_uid>721466_142809_141123</t_uid>
+		<path>/testsuite/client_2B_H/ihwk_CpuAff_142343_141123</path>
+	</metadata>
+	<duration>120</duration>
+	<connection>
+		<custom>
+			<client_ip>10.2.1.50</client_ip>
+			<server_ip>10.2.1.51</server_ip>
+			<port>8210</port>
+			<gap>2500</gap>
+			<datagram>
+				<size>65000</size>
+				<random>false</random>
+			</datagram>
+			<qos>false</qos>
+		</custom>
+	</connection>
+	<interface>
+		<client>enp24s0f1</client>
+		<server>enp1s0f1</server>
+	</interface>
+	<stress>
+		<type>NONE</type>
+		<num>0</num>
+		<location>LOC_BOTH</location>
+	</stress>
+</test_description>
