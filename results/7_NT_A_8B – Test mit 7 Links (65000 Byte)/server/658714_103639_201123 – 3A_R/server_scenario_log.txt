@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/client_3A_R/ihwk_load_test_103639_2011/658714_103639_201123/test_description.xml
-
-[TS] REPORT TIMESTAMP: Mon Nov 20 10:57:33 2023
-
-[RE] PATH            : /testsuite/client_3A_R/ihwk_load_test_103639_2011/658714_103639_201123/test_results.xml
-
