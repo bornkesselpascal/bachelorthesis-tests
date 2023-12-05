@@ -1,4 +1,0 @@
-Duration (s),Method,Test-ID,Client,Server,Port,Cycle Time (ns),Datagram Size (B),QoS,Stress,Intensity,Location,Status,Losses [total],Losses [ratio](%),Losses [location],Pakets [total],PPS [udp],PPS [ip],Bandwidth [net](Mbps),Bandwidth [gross](Mbps),Timer Misses,Remarks
-7199.01392,CUSTOM,979966_182249_141023,10.0.0.101,10.0.0.102,8120,2500,80,False,NONE,0,BOTH,SUCCESS,0,0.0,,585708772,81359,81359,52.06976,79.406384,-2001069916,Server data missing.
-7199.958585,CUSTOM,577799_202301_141023,10.0.0.101,10.0.0.102,8120,2500,8900,False,NONE,0,BOTH,SUCCESS,0,0.0,,493747219,68576,68576,4882.6112,4905.652736,-1908730589,Server data missing.
-7199.960459,CUSTOM,978203_222314_141023,10.0.0.101,10.0.0.102,8120,2500,65000,False,NONE,0,BOTH,SUCCESS,0,0.0,,102496437,14235,113880,7402.2,7434.0864,-1517479448,Server data missing.
