@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/cpu_server_lt/360898_141802_041023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Wed Oct  4 15:18:09 2023
-
-[RE] PATH            : /testsuite/cpu_server_lt/360898_141802_041023/test_results.xml
-

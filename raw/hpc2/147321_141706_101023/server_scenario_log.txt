@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/io_client_lt_141706_101023/147321_141706_101023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Tue Oct 10 11:18:13 2023
-
-[RE] PATH            : /testsuite/io_client_lt_141706_101023/147321_141706_101023/test_results.xml
-

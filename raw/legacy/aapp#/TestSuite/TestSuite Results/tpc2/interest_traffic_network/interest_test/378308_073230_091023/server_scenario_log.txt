@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/interest_traffic_network/interest_test/378308_073230_091023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Mon Oct  9 07:34:24 2023
-
-[RE] PATH            : /testsuite/interest_traffic_network/interest_test/378308_073230_091023/test_results.xml
-

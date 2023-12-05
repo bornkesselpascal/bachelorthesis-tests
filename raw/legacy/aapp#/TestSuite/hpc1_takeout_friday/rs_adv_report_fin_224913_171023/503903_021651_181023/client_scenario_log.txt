@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/rs_adv_report_fin_224913_171023/503903_021651_181023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Wed Oct 18 02:36:09 2023
-
-[RE] PATH            : /testsuite/rs_adv_report_fin_224913_171023/503903_021651_181023/test_results.xml
-

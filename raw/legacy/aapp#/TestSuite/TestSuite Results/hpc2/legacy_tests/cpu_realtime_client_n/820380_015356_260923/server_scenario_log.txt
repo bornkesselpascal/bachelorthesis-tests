@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/cpu_realtime_client_n/820380_015356_260923/test_description.xml
-
-[TS] REPORT TIMESTAMP: Tue Sep 26 10:37:44 2023
-
-[RE] PATH            : /testsuite/cpu_realtime_client_n/820380_015356_260923/test_results.xml
-

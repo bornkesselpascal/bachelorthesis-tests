@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/memory_test_eno1/750170_062457_170923/test_description.xml
-
-[TS] REPORT TIMESTAMP: Sun Sep 17 06:25:11 2023
-
-[RE] PATH            : /testsuite/memory_test_eno1/750170_062457_170923/test_results.xml
-

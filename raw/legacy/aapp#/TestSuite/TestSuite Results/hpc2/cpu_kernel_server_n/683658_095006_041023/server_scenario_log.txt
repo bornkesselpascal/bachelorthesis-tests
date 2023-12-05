@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/cpu_kernel_server_n/683658_095006_041023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Wed Oct  4 08:38:25 2023
-
-[RE] PATH            : /testsuite/cpu_kernel_server_n/683658_095006_041023/test_results.xml
-

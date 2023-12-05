@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/rs_mesh_try_054546_221023/392222_074559_221023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Sun Oct 22 09:46:07 2023
-
-[RE] PATH            : /testsuite/rs_mesh_try_054546_221023/392222_074559_221023/test_results.xml
-

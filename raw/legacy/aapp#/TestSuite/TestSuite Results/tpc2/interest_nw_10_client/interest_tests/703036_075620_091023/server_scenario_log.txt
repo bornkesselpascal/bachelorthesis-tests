@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/interest_nw_10_client/interest_tests/703036_075620_091023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Mon Oct  9 07:58:14 2023
-
-[RE] PATH            : /testsuite/interest_nw_10_client/interest_tests/703036_075620_091023/test_results.xml
-

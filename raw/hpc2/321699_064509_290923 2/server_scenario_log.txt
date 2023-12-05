@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/mem_server_bandwidthtest_2D/321699_064509_290923/test_description.xml
-
-[TS] REPORT TIMESTAMP: Fri Sep 29 05:35:04 2023
-
-[RE] PATH            : /testsuite/mem_server_bandwidthtest_2D/321699_064509_290923/test_results.xml
-

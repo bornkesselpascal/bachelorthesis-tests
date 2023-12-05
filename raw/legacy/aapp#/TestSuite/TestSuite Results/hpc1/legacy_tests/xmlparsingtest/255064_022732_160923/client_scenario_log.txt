@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/legacy_tests/xmlparsingtest/255064_022732_160923/test_description.xml
-
-[TS] REPORT TIMESTAMP: Sat Sep 16 02:27:45 2023
-
-[RE] PATH            : /testsuite/legacy_tests/xmlparsingtest/255064_022732_160923/test_results.xml
-

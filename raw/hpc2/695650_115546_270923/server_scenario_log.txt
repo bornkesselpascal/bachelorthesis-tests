@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/interest_test_server/695650_115546_270923/test_description.xml
-
-[TS] REPORT TIMESTAMP: Wed Sep 27 13:19:11 2023
-
-[RE] PATH            : /testsuite/interest_test_server/695650_115546_270923/test_results.xml
-

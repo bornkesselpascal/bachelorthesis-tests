@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/custom_test_eno1/615839_042157_170923/test_description.xml
-
-[TS] REPORT TIMESTAMP: Sun Sep 17 04:23:01 2023
-
-[RE] PATH            : /testsuite/custom_test_eno1/615839_042157_170923/test_results.xml
-

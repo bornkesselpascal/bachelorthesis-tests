@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/network_lt/637148_173954_041023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Wed Oct  4 18:40:02 2023
-
-[RE] PATH            : /testsuite/network_lt/637148_173954_041023/test_results.xml
-

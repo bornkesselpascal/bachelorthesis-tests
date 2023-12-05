@@ -1,6 +1,0 @@
-[TD] PATH            : /testsuite/realstress_rl65_fq_fin_172331_161023/365056_192016_161023/test_description.xml
-
-[TS] REPORT TIMESTAMP: Mon Oct 16 19:29:24 2023
-
-[RE] PATH            : /testsuite/realstress_rl65_fq_fin_172331_161023/365056_192016_161023/test_results.xml
-
