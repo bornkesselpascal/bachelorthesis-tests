@@ -1,3 +1,6 @@
 [submodule "eParser"]
 	path = eParser
 	url = https://github.com/bornkesselpascal/eParser
+[submodule "results/reliability"]
+	path = results/reliability
+	url = https://github.com/bornkesselpascal/testresults_reliability.git
