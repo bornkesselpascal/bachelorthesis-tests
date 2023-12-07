@@ -4,8 +4,8 @@ from matplotlib.ticker import FuncFormatter
 import numpy as np
 
 # Data
-categories  = ['enabled', 'inverted']
-resu        = [63.18936, 54.18]
+categories  = ['unbelastet', 'volle Last']
+resu        = [9554, 5697]
 
 
 
@@ -21,7 +21,7 @@ fig, ax = plt.subplots(figsize=(4, 5))
 
 # Stacked bar chart
 #'colors' : {'datagramsize': {80: 'lightgray', 8900: 'steelblue', 65000: '#9fcc9f',},
-bar1 = ax.bar(categories, resu, label='80 Byte', color='lightgray')
+bar1 = ax.bar(categories, resu, label='80 Byte', color='steelblue')
 
 for bar in bar1:
     height = bar.get_height()
@@ -35,8 +35,9 @@ for bar in bar1:
 
 # Labels, title, and other configurations
 ax.set_ylabel('Datenübertragungsrate (Mbit/s)')
-ax.set_xlabel('CPU affinity')
-ax.set_title('80 Byte')
+ax.set_xlabel('Kommunikationslast')
+ax.set_title('8900 Byte')
+plt.ylim(ymax = 11000, ymin = 0)
 
 def percent_formatter(x, _):
     return f"{x:.0f} Mbit/s"
