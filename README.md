@@ -1,1 +1,1 @@
-# TestResults
+# bachelorthesis-tests
