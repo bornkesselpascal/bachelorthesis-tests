@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<performance>
+  <basic>
+    <t_uid>143746_061223_1_25000</t_uid>
+    <datagram_size>25000</datagram_size>
+    <cycle_time>1</cycle_time>
+  </basic>
+  <test>
+    <duration>5.712747</duration>
+    <datagrams>283566</datagrams>
+    <bandwidth>9927483223.044886</bandwidth>
+  </test>
+  <timestamps>
+    <packet_loss>False</packet_loss>
+    <in_order>False</in_order>
+    <average_difference>0.00016505882882291844</average_difference>
+    <standard_deviation>2.075103829526333e-05</standard_deviation>
+    <minimum_difference>5.3622e-05</minimum_difference>
+    <maximum_difference>0.000540658</maximum_difference>
+    <difference_difference>0.00048703599999999994</difference_difference>
+    <jitter>1.7855204976231905e-05</jitter>
+  </timestamps>
+</performance>
